@@ -23,6 +23,12 @@ Route::get('/login',function (){
    return view('Connexion');
 })->name('login');
 
+Route::get('/motdepasseoublie',function (){
+  return view('reinitialisation');
+})->name('oublimotdepasse');
+
+
+
 // Connexion Et Deconnexion 
 
 Route::post('/login',[logincon::class,'login']);

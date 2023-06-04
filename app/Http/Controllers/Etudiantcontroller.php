@@ -205,6 +205,31 @@ class Etudiantcontroller extends Controller
 
      }
 
+     
+    public function reset(Request $request)
+    {
+        $request->validate([
+            'username' => 'required',
+            'cne' => 'required',
+            'new_password' => 'required|confirmed|min:8',
+        ]);
+
+        $etudiant = etudiant::where('cne', $request->cne)->first();
+        $util = User::where('username', $request->username)->first();
+
+        if (!$etudiant || $util !== $request->username) {
+            return redirect()->to_route('oublimotdepasse')->withErrors(['error' => 'Étudiant introuvable. Veuillez vérifier vos informations.']);
+        }
+
+        $util->password = Hash::make($request->new_password);
+        $util->save();
+
+
+        return redirect()->route('login')->with('success', 'Votre mot de passe a été réinitialisé avec succès. Veuillez vous connecter avec votre nouveau mot de passe.');
+    }
+
+
+
 
 
     }
