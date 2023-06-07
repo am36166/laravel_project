@@ -1,4 +1,5 @@
 @extends('etudiantpage')
+@section('title','Espace etudiant')
 @section('studentcontent')
 
 <form action="{{ route('paiementstore',['id' => $etudiant->id]) }}" method="POST">

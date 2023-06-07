@@ -1,4 +1,5 @@
 @extends('main')
+@section('title','Responsable Filiere')
 @section('studentcontent')
           <div class="wrapper">
   

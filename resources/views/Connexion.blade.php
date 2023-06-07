@@ -6,6 +6,7 @@
                 {{ session('success') }}
               </div>
             </div>
+  @endif
 <div class="container my-5">
   <div class="row justify-content-center">
     <div class="col-lg-4 col-md-6 col-sm-8">

@@ -1,4 +1,5 @@
 @extends('etudiantpage')
+@section('title','Espace etudiant')
 @section('studentcontent')
   <div class="container m-3">
     <form class="p-3 border rounded-3" method="POST" action="{{ route('updatestore',['id' => $etudiant->id]) }}">

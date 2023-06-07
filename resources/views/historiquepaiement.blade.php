@@ -1,4 +1,5 @@
 @extends('etudiantpage')
+@section('title','Espace etudiant')
 @section('studentcontent')
 
  <div class="container">

@@ -1,4 +1,5 @@
 @extends('main')
+@section('title','Service Informatique')
 @section('studentcontent')
           <div class="wrapper">
   
