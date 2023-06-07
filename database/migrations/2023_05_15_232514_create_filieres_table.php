@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('nom_fil');
             $table->unsignedBigInteger('id_resp');
             $table->foreign('id_resp')->references('id_resp')->on('responsablefilieres')->onDelete('cascade');           
-            $table->timestamps();
+           $table->decimal('montant_form',8,2);
         });
     }
 

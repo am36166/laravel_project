@@ -39,7 +39,7 @@ class Etudiantcontroller extends Controller
          'urlimg'  => $request->file('image')->store('profiletud','public'),//inserer la photo Ds le Dossier public
         'date_naissance' => $request->datenaissance,
         'user_id' => $userid,
-        'filiere_id' => '2',
+        'filiere_id' => '3',
     ]);
    
         
@@ -96,101 +96,42 @@ class Etudiantcontroller extends Controller
     return view('profile',compact('etudiant')) ;
 }
 
-   public function paiement(Request $request , $id){
-         $etudiant = Etudiant::findOrFail($id);
+   public function paiement(Request $request ,  $id){
+        $etudiant = Etudiant::findOrFail($id);          
+        return view('paiement',compact('etudiant'));
+    }
+   
+
+    public function storepaiement(Request $request,$id){
+        $etudiant = Etudiant::findOrFail($id);
          $cne = $etudiant->cne ;
-         $etudiantVirement = DB::table('etudiant_declarevirements')
-        ->select('*')
-        ->where('cne', $cne)
-        ->orderBy('num_vir','desc')
-        ->first();
-        if($etudiantVirement){
-            $typevirement = DB::table('declarevirements')
-            ->select('*')
-            ->where('num_vir', $etudiantVirement->num_vir)
-            ->first();
-        if($typevirement->type_paiement == "unique") 
-        return to_route('etudiant')->with('error', 'Vous avez déjà effectué Votre paiement.');
-        if($typevirement->type_paiement == "facilite"){
-               $typevir = DB::table('declarevirements')
-               ->select('*')
-               ->where('num_vir', $etudiantVirement->num_vir)
-               ->first();
-               $typePaiement = "facilite" ;
-               Session::put('type_paiement', $typePaiement);
-            if($typevir->num_facilite >= 3)   return to_route('etudiant')->with('error', 'Vous avez déjà effectué Votre paiement.');
-          }
-        }
-       return view('paiement',compact('etudiant'));
-   }
-
-    public function storepaiement(Request $request){
-      $etudiant = Etudiant::findOrFail($request->id) ;
-      $request->validate([
-         'montant' => 'required|numeric',
-         'type_paiement' => 'required',
-         'date_transaction' => 'required|date',
-      ]);
-     
-   // Recuperation des donnes
-     $montant = $request->montant;
-     $type_paiement = $request->type_paiement;
-     $date_transaction = $request->date_transaction;
-     $typevirement = $request->type_virement ;
-     
-
-    //traitement en fonction du Type de Paiement
-
-     if ($type_paiement === "facilite") {
-
-    // Verfier si l'etudiant a deja regler une tranche
-         $cne = $etudiant->cne ;
-         $etudiantVirement = DB::table('etudiant_declarevirements')
-                                 ->select('*')
-                                 ->where('cne', $cne)
-                                 ->orderBy('num_vir','desc')
-                                 ->first();
-               $cmpt=1;
-        if($etudiantVirement){
-            $typevir = DB::table('declarevirements')
-            ->select('*')
-            ->where('num_vir', $etudiantVirement->num_vir)
-            ->first();
-        $cmpt= $typevir->num_facilite + 1 ;
-       }
-
        
-             $vir = declarevirement::create([
-                 'type_vir'=> $typevirement,
-                 'montant' => $montant,
-                 'type_paiement' => $type_paiement,
-                 'date_vir' => $date_transaction,
-                 'num_facilite' => $cmpt ,
-             ]);
-             
-             
-             etudiant_declarevirement::create([
-                'num_vir'=> $vir->id,
-                 'cne' => $etudiant->cne,
-             ]);
-         
-     } else {
-        $vir = declarevirement::create([
-            'type_vir'=> $typevirement,
-             'montant' => $montant,
-             'type_paiement' => $type_paiement,
-             'date_vir' => $date_transaction,
-         ]);
-
-        etudiant_declarevirement::create([
-            'num_vir'=> $vir->id,
-             'cne' => $etudiant->cne,
-         ]);
+         // Valider les données du formulaire
+         $request->validate([
+            'montant' => 'required',
+            'type_virement' => 'required',
+            'date_transaction' => 'required',
+            'recu' => 'required|file|mimes:pdf|max:2048',
+        ]);
         
+    
+        // Enregistrer les informations de paiement dans la table "virement"
+        $virement = DB::table('declarevirements')->insertGetId([
+            'montant' => $request->montant,
+            'type_vir' => $request->type_virement,
+            'date_vir' => $request->date_transaction,
+            'urlrecu' => $request->file('recu')->store('profiletud','public'),
+        ]);
 
-     }
 
-     return redirect()->route('etudiant')->with('success', 'votre paiement a ete Bien effectue');
+        // Enregistrer la relation de clé étrangère dans la table "etudiantvirement"
+        DB::table('etudiant_declarevirements')->insert([
+            'num_vir' => $virement,
+            'cne' => $cne,
+        ]);
+
+        // Rediriger ou retourner une réponse réussie
+        return to_route('etudiant')->with('successpai', 'Paiement enregistré avec succès !');
  }
 
 

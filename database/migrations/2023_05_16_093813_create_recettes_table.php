@@ -16,7 +16,6 @@ return new class extends Migration
             $table->integer('total_m');
             $table->unsignedBigInteger('num_prog');
             $table->foreign('num_prog')->references('num_prog')->on('progemplois')->onDelete('cascade');
-            $table->timestamps();
         });
     }
 

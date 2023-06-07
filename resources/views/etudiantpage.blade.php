@@ -217,9 +217,9 @@ body {
                                 </div>
                                 @endif
 
-                                @if (session()->has('success'))
+                             @if (session()->has('successpai'))
                                 <div class="alert alert-success my-3">
-                                    {{ session('success') }}
+                                    {{ session('successpai') }}
                                 </div>
                                 @endif
 

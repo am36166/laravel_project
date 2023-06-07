@@ -1,7 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use Illuminate\Support\Facades\DB ;
+use App\Models\etudiant_declarevirement;
+use Symfony\Component\HttpFoundation\Request;
 
 
 class servicefinancier extends Controller
@@ -33,16 +36,35 @@ public function repartir(){
     }
   
     public function indexetatpaiement(){
-        $etudiants = DB::select("
-        SELECT e.cne, e.nom_e, e.prenom_e, e.urlimg, COUNT(DISTINCT ev.num_vir) AS nombre_virements, SUM(v.montant) AS somme_montants
-        FROM etudiants e
-        LEFT JOIN etudiant_declarevirements ev ON e.cne = ev.cne
-        LEFT JOIN declarevirements v ON ev.num_vir = v.num_vir
-        GROUP BY e.cne, e.nom_e, e.prenom_e, e.urlimg
-    ");
-
-                 
-    return view('etatpaiement', ['etudiants' => $etudiants]);
-
+        $etudiants = DB::table('etudiants')
+        ->select('cne', 'nom_e', 'prenom_e', 'urlimg')
+        ->get();
+    
+    foreach ($etudiants as $etudiant) {
+        $paiements = DB::table('etudiant_declarevirements AS ev')
+            ->join('declarevirements AS v', 'ev.num_vir', '=', 'v.num_vir')
+            ->where('ev.cne', $etudiant->cne)
+            ->select('v.montant', 'v.montant_valide','v.date_vir' ,'v.urlrecu' , 'v.num_vir')
+            ->get();
+    
+        $etudiant->paiements = $paiements;
     }
+    
+       return view('etatpaiement', compact('etudiants')); 
+   }
+
+   public function validerPaiement(Request $request, $numVir)
+{
+    $result = DB::table('declarevirements')
+                ->where('num_vir', $numVir)
+                ->update(['montant_valide' => 1]);
+
+           
+    if ($result) {
+        return redirect()->route('etat')->with('success', 'Paiement validé avec succès.');
+    } else {
+        return redirect()->back()->with('error', 'Virement non trouvé.');
+    }
+}
+
 }

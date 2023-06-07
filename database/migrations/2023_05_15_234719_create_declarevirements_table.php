@@ -15,10 +15,12 @@ return new class extends Migration
             $table->id('num_vir');
             $table->string('type_vir');
             $table->decimal('montant',8,2);
-            $table->string('type_paiement');
             $table->dateTime('date_vir');
+            $table->tinyInteger('montant_valide')->default('0');
+            $table->tinyInteger('comptabilise')->default('0');
+            $table->string('urlrecu');
             $table->bigInteger('num_facilite')->nullable() ;
-            $table->timestamps();
+             
         });
     }
 

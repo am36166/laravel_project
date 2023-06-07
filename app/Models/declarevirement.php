@@ -14,8 +14,10 @@ class declarevirement extends Model
         'num_vir',
         'type_vir',
         'montant',
-        'type_paiement',
         'date_vir',
+        'montant_valide',
+        'comptabilise',
+        'urlrecu',
         'num_facilite'
     ];
     

@@ -80,7 +80,7 @@ class Serviceinfocontroller extends Controller
               'urlimg'  => $request->file('image')->store('profiletud','public'),//inserer la photo Ds le Dossier public
              'date_naissance' => $request->datenaissance,
              'user_id' => $userid,
-             'filiere_id' => '2',
+             'filiere_id' => '3',
          ]);
 
              

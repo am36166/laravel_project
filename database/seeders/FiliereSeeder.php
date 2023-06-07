@@ -17,7 +17,8 @@ class FiliereSeeder extends Seeder
 
         DB::table('filieres')->insert([
            'nom_fil' => 'SMI' ,
-            'id_resp' => '1',
+            'id_resp' => '2',
+            'montant_form'=>'25000',
          ]);
     }
 }

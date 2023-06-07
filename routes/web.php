@@ -46,8 +46,8 @@ Route::prefix('etudiantpage')->middleware(['auth', 'Role:0'])->group(function ()
   Route::get('/modifier/{id}', [Etudiantcontroller::class, 'indexform'])->name('updatedata') ;
   Route::post('/modifier/{id}', [Etudiantcontroller::class, 'updatestore'])->name('updatestore') ;
   Route::get('/Pdf/{id}', [Generpdf::class, 'genererPDF'])->name('Pdf') ;
-  Route::get('/paiement/{id}', [Etudiantcontroller::class, 'paiement'])->name('paiement') ;
-  Route::post('/paiement/{id}', [Etudiantcontroller::class, 'storepaiement'])->name('paiementstore') ;
+  Route::any('/paiement/{id}', [Etudiantcontroller::class, 'paiement'])->name('paiement') ;
+  Route::post('/paiementstore/{id}', [Etudiantcontroller::class, 'storepaiement'])->name('paiementstore') ;
   Route::get('/profile/{id}', [Etudiantcontroller::class, 'indexprofile'])->name('profile') ;
   Route::get('/historique/{id}', [Etudiantcontroller::class, 'historique'])->name('historique');
 });
@@ -66,6 +66,8 @@ Route::prefix('servicefin')->middleware(['auth', 'Role:2'])->group(function (){
   Route::get('/',[servicefinancier::class, 'indexfinancier'])->name('servicefin');
   Route::get('/etatpaiement',[servicefinancier::class, 'indexetatpaiement'])->name('etat');
   Route::get('/repartir',[servicefinancier::class, 'repartir'])->name('repartition');
+  Route::post('/valider-paiement/{numVir}', [servicefinancier::class, 'validerPaiement'])
+    ->name('valider_paiement');
 });
 
 

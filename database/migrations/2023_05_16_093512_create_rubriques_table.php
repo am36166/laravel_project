@@ -15,7 +15,8 @@ return new class extends Migration
             $table->id('id_rub');
             $table->string('nom_rub');
             $table->float('prc');
-            $table->timestamps();
+            $table->decimal('montant_rub',8,2);
+           
         });
     }
 

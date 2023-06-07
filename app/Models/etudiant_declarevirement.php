@@ -11,6 +11,7 @@ class etudiant_declarevirement extends Model
     protected $fillable = [
         'num_vir',
         'cne'
+
     ];
     
     
