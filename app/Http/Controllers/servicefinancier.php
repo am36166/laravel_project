@@ -13,27 +13,110 @@ class servicefinancier extends Controller
         return view('servicefinancier');
 }
 
-public function repartir(){
-
-    //calcul la somme des recettes 
+public function repartir()
+{
+    // Calcul de la somme des recettes
+    $montantTotal = DB::table('declarevirements')->where('montant_valide', 1)->sum('montant');
     
-    $montantTotal = DB::table('declarevirements')->sum('montant') ;
-    $resultat = [];
-
     // Répartition des montants sur les rubriques principales
-    $resultat['indemnites'] = $montantTotal * 0.4;
-    $resultat['universite'] = $montantTotal * 0.125;
-    $resultat['departement'] = $montantTotal * 0.025;
-    $resultat['faculte'] = $montantTotal * 0.25;
-  // Répartition du montant de la rubrique faculte sur les sous-rubriques
-        $resultat['gestion_faculte'] = $resultat['faculte'] * 0.4; 
-        $resultat['cfc'] = $resultat['faculte'] * 0.2;
-        $resultat['fonctionnaire'] = $resultat['faculte'] * 0.2;
-        $resultat['gestion_filiere'] = $resultat['faculte'] * 0.2;
-        $resultat['materiel'] = $montantTotal * 0.2;
-        return view('repartirprog', compact('resultat'));
+    $resultat = [
+        'indemnites' => [
+            'prc' => 0.4,
+            'montant_rub' => $montantTotal * 0.4
+        ],
+        'universite' => [
+            'prc' => 0.125,
+            'montant_rub' => $montantTotal * 0.125
+        ],
+        'departement' => [
+            'prc' => 0.025,
+            'montant_rub' => $montantTotal * 0.025
+        ],
+        'faculte' => [
+            'prc' => 0.25,
+            'montant_rub' => $montantTotal * 0.25
+        ],
+        'gestion_faculte' => [
+            'prc' => 0.4,
+            'montant_rub' => 0
+        ],
+        'cfc' => [
+            'prc' => 0.2,
+            'montant_rub' => 0
+        ],
+        'fonctionnaire' => [
+            'prc' => 0.2,
+            'montant_rub' => 0
+        ],
+        'gestion_filiere' => [
+            'prc' => 0.2,
+            'montant_rub' => 0
+        ],
+        'materiel' => [
+            'prc' => 0.2,
+            'montant_rub' => $montantTotal * 0.2
+        ]
+    ];
+  
+    // Répartition du montant de la rubrique faculte sur les sous-rubriques
+    $resultat['gestion_faculte']['montant_rub'] = $resultat['faculte']['montant_rub'] * $resultat['gestion_faculte']['prc'];
+    $resultat['cfc']['montant_rub'] = $resultat['faculte']['montant_rub'] * $resultat['cfc']['prc'];
+    $resultat['fonctionnaire']['montant_rub'] = $resultat['faculte']['montant_rub'] * $resultat['fonctionnaire']['prc'];
+    $resultat['gestion_filiere']['montant_rub'] = $resultat['faculte']['montant_rub'] * $resultat['gestion_filiere']['prc'];
 
-    }
+    // Insérer les enregistrements dans la table "rubrique"
+    DB::table('rubriques')->insert([
+        [
+            'nom_rub' => 'indemnites',
+            'prc' => $resultat['indemnites']['prc'],
+            'montant_rub' => $resultat['indemnites']['montant_rub']
+        ],
+        [
+            'nom_rub' => 'universite',
+            'prc' => $resultat['universite']['prc'],
+            'montant_rub' => $resultat['universite']['montant_rub']
+        ],
+        [
+            'nom_rub' => 'departement',
+            'prc' => $resultat['departement']['prc'],
+            'montant_rub' => $resultat['departement']['montant_rub']
+        ],
+        [
+            'nom_rub' => 'faculte',
+            'prc' => $resultat['faculte']['prc'],
+            'montant_rub' => $resultat['faculte']['montant_rub']
+        ],
+        [
+            'nom_rub' => 'gestion_faculte',
+            'prc' => $resultat['gestion_faculte']['prc'],
+            'montant_rub' => $resultat['gestion_faculte']['montant_rub']
+        ],
+        [
+            'nom_rub' => 'cfc',
+            'prc' => $resultat['cfc']['prc'],
+            'montant_rub' => $resultat['cfc']['montant_rub']
+        ],
+        [
+            'nom_rub' => 'fonctionnaire',
+            'prc' => $resultat['fonctionnaire']['prc'],
+            'montant_rub' => $resultat['fonctionnaire']['montant_rub']
+        ],
+        [
+            'nom_rub' => 'gestion_filiere',
+            'prc' => $resultat['gestion_filiere']['prc'],
+            'montant_rub' => $resultat['gestion_filiere']['montant_rub']
+        ],
+        [
+            'nom_rub' => 'materiel',
+            'prc' => $resultat['materiel']['prc'],
+            'montant_rub' => $resultat['materiel']['montant_rub']
+        ]
+    ]);
+
+    return view('repartirprog', compact('resultat'));
+}
+
+
   
     public function indexetatpaiement(){
         $etudiants = DB::table('etudiants')

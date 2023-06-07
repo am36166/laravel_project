@@ -21,6 +21,7 @@
         <table class="table table-striped table-bordered table-sm mt-4">
             <thead class="table-dark">
                 <tr>
+                   
                     <th>Nom</th>
                     <th>Prénom</th>
                     <th>Photo</th>
@@ -34,6 +35,7 @@
                 @foreach ($etudiants as $etudiant)
                     @if ($etudiant->paiements->isEmpty())
                         <tr>
+                          
                             <td>{{ $etudiant->nom_e }}</td>
                             <td>{{ $etudiant->prenom_e }}</td>
                             <td>
