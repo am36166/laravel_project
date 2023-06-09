@@ -37,6 +37,13 @@
                             </a>
                         </li>
 
+                        <li class="nav-item">
+                            <a href="{{ route('etatprog') }}" class="nav-link active">
+                            <i class="nav-icon fas fa-dollar-sign"></i>
+                                    <p>Etat du Programme d'emploi</p>
+                            </a>
+                        </li>
+
                             <li class="nav-item">
                             <a href="{{ route('progemplois') }}" class="nav-link active">
                                     <p>Programme d'emplois</p>

@@ -6,7 +6,7 @@
       <div class="card">
         <div class="card-body">
           <h4 class="card-title text-center mb-4">Réinitialiser le mot de passe</h4>
-          <form method="POST" action="">
+          <form method="POST" action="{{ route('oublie') }}">
             @csrf
             @if ($errors->any())
                   <div class="alert alert-danger">

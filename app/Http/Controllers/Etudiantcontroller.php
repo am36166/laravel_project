@@ -152,16 +152,15 @@ class Etudiantcontroller extends Controller
         $request->validate([
             'username' => 'required',
             'cne' => 'required',
-            'new_password' => 'required|confirmed|min:8',
+            'new_password' => 'required',
         ]);
+        
+        $etudiant = Etudiant::where('cne', $request->cne)->first();
+        $util = User::find($etudiant->user_id);
 
-        $etudiant = etudiant::where('cne', $request->cne)->first();
-        $util = User::where('username', $request->username)->first();
-
-        if (!$etudiant || $util !== $request->username) {
-            return redirect()->to_route('oublimotdepasse')->withErrors(['error' => 'Étudiant introuvable. Veuillez vérifier vos informations.']);
-        }
-
+         if (!$etudiant || !$util) {
+                return redirect()->route('oublimotdepasse')->withErrors(['error' => 'Étudiant introuvable. Veuillez vérifier vos informations.']);
+          }
         $util->password = Hash::make($request->new_password);
         $util->save();
 

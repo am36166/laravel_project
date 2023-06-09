@@ -15,10 +15,10 @@
           <h4 class="card-title text-center mb-4">S'authentifier</h4>
           <form method="POST" action="{{ route('login') }}">
             @csrf
-            @if (session()->has('errors'))
+            @if (session()->has('Erreurs'))
             <div class="container">
               <div class="row alert alert-danger my-3">
-                {{ session('errors') }}
+                {{ session('Erreurs') }}
               </div>
             </div>
             @endif
