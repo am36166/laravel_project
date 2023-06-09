@@ -138,7 +138,7 @@ body {
 .card-text a:hover {
   color: #999;
 }
-
+@yield('style')
 </style>
 </head>
 <body>  
