@@ -14,8 +14,8 @@ class ServicefinancierSeeder extends Seeder
     {
         
        DB::table('servicefinanciers')->insert([
-           'nom' => 'Ahmed',
-            'prenom' => 'Alami',
+           'nom' => 'ghallab',
+            'prenom' => 'amine',
             'user_id'  => '2',
         ]);
 

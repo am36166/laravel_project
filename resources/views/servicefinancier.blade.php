@@ -30,8 +30,15 @@
                             </a>
                         </li>
                             <li class="nav-item">
-                            <a href="{{ route('repartition') }}" class="nav-link active">
+                            <a href="{{ route('repartir') }}" class="nav-link active">
                                     <p>Repartition</p>
+                            </a>
+                        </li>
+
+                        </li>
+                            <li class="nav-item">
+                            <a href="{{ route('recette') }}" class="nav-link active">
+                                    <p>Etat des recettes</p>
                             </a>
                         </li>
                     </ul>

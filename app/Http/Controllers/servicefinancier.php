@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\DB ;
 use App\Models\etudiant_declarevirement;
-use Symfony\Component\HttpFoundation\Request;
+use Illuminate\Http\Request;
 
 
 class servicefinancier extends Controller
@@ -13,12 +13,38 @@ class servicefinancier extends Controller
         return view('servicefinancier');
 }
 
-public function repartir()
+public function repartir(Request $request)
 {
-    // Calcul de la somme des recettes
-    $montantTotal = DB::table('declarevirements')->where('montant_valide', 1)->sum('montant');
+          $filiere = $request->input('filiere') ;
     
-    // Répartition des montants sur les rubriques principales
+          $montantTotal = DB::table('declarevirements') 
+          ->join('etudiant_declarevirements', 'declarevirements.num_vir', '=', 'etudiant_declarevirements.num_vir')
+          ->join('etudiants', 'etudiant_declarevirements.cne', '=', 'etudiants.cne')
+          ->join('filieres', 'etudiants.filiere_id', '=', 'filieres.id')
+          ->where('filieres.nom_fil', $filiere)
+          ->where('declarevirements.comptabilise', 0)
+          ->where('declarevirements.montant_valide', 1)
+         ->sum('declarevirements.montant');
+
+         $filiereId = DB::table('filieres')->where('nom_fil', $filiere)->value('id');
+
+         if ($montantTotal != 0) {
+
+         $numProg = DB::table('progemplois')->insertGetId([
+            'financ_id' => 1, 
+            'filiere_id' =>  $filiereId 
+        ]);
+
+        DB::table('recettes')->insert([
+            'total_m' => $montantTotal,
+            'num_prog' => $numProg
+        ]);
+
+       // Comptabilise les montants 
+
+     DB::table('declarevirements')->where('montant_valide', 1)->where('comptabilise', 0)->update(['comptabilise' => 1]);
+
+       // Répartition des montants sur les rubriques principales
     $resultat = [
         'indemnites' => [
             'prc' => 0.4,
@@ -113,7 +139,49 @@ public function repartir()
         ]
     ]);
 
-    return view('repartirprog', compact('resultat'));
+    DB::table('rubrique_progremplois')->insert([
+        [
+            'num_prog' => $numProg,
+            'id_rub' => DB::table('rubriques')->where('nom_rub', 'indemnites')->value('id_rub')
+        ],
+        [
+            'num_prog' => $numProg,
+            'id_rub' => DB::table('rubriques')->where('nom_rub', 'universite')->value('id_rub')
+        ],
+        [
+            'num_prog' => $numProg,
+            'id_rub' => DB::table('rubriques')->where('nom_rub', 'departement')->value('id_rub')
+        ],
+        [
+            'num_prog' => $numProg,
+            'id_rub' => DB::table('rubriques')->where('nom_rub', 'faculte')->value('id_rub')
+        ],
+        [
+            'num_prog' => $numProg,
+            'id_rub' => DB::table('rubriques')->where('nom_rub', 'gestion_faculte')->value('id_rub')
+        ],
+        [
+            'num_prog' => $numProg,
+            'id_rub' => DB::table('rubriques')->where('nom_rub', 'cfc')->value('id_rub')
+        ],
+        [
+            'num_prog' => $numProg,
+            'id_rub' => DB::table('rubriques')->where('nom_rub', 'fonctionnaire')->value('id_rub')
+        ],
+        [
+            'num_prog' => $numProg,
+            'id_rub' => DB::table('rubriques')->where('nom_rub', 'gestion_filiere')->value('id_rub')
+        ],
+        [
+            'num_prog' => $numProg,
+            'id_rub' => DB::table('rubriques')->where('nom_rub', 'materiel')->value('id_rub')
+        ]
+    ]);
+
+}
+
+
+    return  view('repartirprog',compact('resultat'));
 }
 
 
@@ -149,5 +217,37 @@ public function repartir()
         return redirect()->back()->with('error', 'Virement non trouvé.');
     }
 }
+
+  public function indexrecette(){
+
+     return view('recette');
+  }
+
+
+   public function sommerecette(Request $request){
+
+    $filiere = $request->input('filiere') ;
+
+    $Sommedesrecettes = DB::table('declarevirements') 
+    ->join('etudiant_declarevirements', 'declarevirements.num_vir', '=', 'etudiant_declarevirements.num_vir')
+    ->join('etudiants', 'etudiant_declarevirements.cne', '=', 'etudiants.cne')
+    ->join('filieres', 'etudiants.filiere_id', '=', 'filieres.id')
+    ->where('filieres.nom_fil', $filiere)
+    ->where('declarevirements.comptabilise', 0)
+    ->where('declarevirements.montant_valide', 1)
+    ->sum('declarevirements.montant');
+
+      return response()->json($Sommedesrecettes);
+    }
+
+
+    public function programme()
+    {
+        return view('prog');
+    }
+
+
+  
+   
 
 }

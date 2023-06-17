@@ -69,9 +69,12 @@ Route::prefix('responsableFil')->middleware(['auth', 'Role:1'])->group(function 
 Route::prefix('servicefin')->middleware(['auth', 'Role:2'])->group(function (){
   Route::get('/',[servicefinancier::class, 'indexfinancier'])->name('servicefin');
   Route::get('/etatpaiement',[servicefinancier::class, 'indexetatpaiement'])->name('etat');
-  Route::get('/repartir',[servicefinancier::class, 'repartir'])->name('repartition');
+  Route::get('/repartir',[servicefinancier::class, 'programme'])->name('repartir');
+  Route::post('/repartir/programme',[servicefinancier::class, 'repartir'])->name('repartirprog');
   Route::post('/valider-paiement/{numVir}', [servicefinancier::class, 'validerPaiement'])
     ->name('valider_paiement');
+  Route::get('/etatrecette',[servicefinancier::class, 'indexrecette'])->name('recette');
+  Route::post('/etatrecette',[servicefinancier::class, 'sommerecette'])->name('sommedesrecettes');
 });
 
 

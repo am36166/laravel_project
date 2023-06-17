@@ -15,10 +15,23 @@ class FiliereSeeder extends Seeder
     {
         //
 
-        DB::table('filieres')->insert([
+     /*   DB::table('filieres')->insert([
            'nom_fil' => 'SMI' ,
             'id_resp' => '2',
             'montant_form'=>'25000',
          ]);
+    */
+    DB::table('filieres')->insert([
+        'nom_fil' => 'smpc' ,
+         'id_resp' => '3',
+         'montant_form'=>'25000',
+      ]); 
+      DB::table('filieres')->insert([
+        'nom_fil' => 'biologie' ,
+         'id_resp' => '4',
+         'montant_form'=>'25000',
+      ]);
+
     }
+
 }

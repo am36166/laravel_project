@@ -29,6 +29,8 @@ class Etudiantcontroller extends Controller
           'password' => Hash::make($request->input('password')),
       ]);
         
+            $filiere = $request->filiere;
+            $filiereId = DB::table('filieres')->where('nom_fil', $filiere)->value('id');
 
        DB::table('etudiants')->insert([
         'cne' => $request->cne,
@@ -39,7 +41,7 @@ class Etudiantcontroller extends Controller
          'urlimg'  => $request->file('image')->store('profiletud','public'),//inserer la photo Ds le Dossier public
         'date_naissance' => $request->datenaissance,
         'user_id' => $userid,
-        'filiere_id' => '3',
+        'filiere_id' => $filiereId,
     ]);
    
         

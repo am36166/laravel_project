@@ -1,7 +1,6 @@
 @extends('servicefinancier')
 @section('servfin')
- 
-     <h1>Répartition des montants</h1>
+ <h1>Répartition des montants</h1>
     <div class="container">
         <div class="row d-flex justify-content-between">
             <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
@@ -87,5 +86,5 @@
         </div>
     </div>
     </div>
-
 @endsection
+

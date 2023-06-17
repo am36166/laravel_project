@@ -32,6 +32,15 @@
                         </div>
 
                         <div class="form-group mb-1">
+                             <label for="filiere">Filière :</label>
+                             <select name="filiere" class="form-control" required>
+                                    <option value="smi">SMI</option>
+                                    <option value="smpc">SMPC</option>
+                                    <option value="biologie">Biologie</option>
+                             </select>
+                        </div>
+
+                        <div class="form-group mb-1">
                             <label for="adresse">Adresse :</label>
                             <textarea name="adresse" id="adresse" class="form-control" rows="1" required></textarea>
                         </div>
