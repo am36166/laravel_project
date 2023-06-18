@@ -60,10 +60,9 @@ Route::prefix('responsableFil')->middleware(['auth', 'Role:1'])->group(function 
   Route::get('/ajoutenseiganant',[responsablefilcontroller::class, 'displayform'])->name('ajoutenseiganant');
   Route::post('/enregistrerenseignant',[responsablefilcontroller::class, 'ajoutenseignant'])->name('storeenseignant');
   Route::get('/listenseignant',[responsablefilcontroller::class, 'liste'])->name('listens');
-  Route::post('/valider-paiement/{numVir}', [responsablefilcontroller::class, 'validerPaiement'])
-    ->name('validerpaiement');
   Route::get('/progemploi', [responsablefilcontroller::class, 'repartir'])
     ->name('etatprog');
+  Route::post('/calculer-vacation', [responsablefilcontroller::class, 'calculerVacation'])->name('calculerVacation');
 });
 
 Route::prefix('servicefin')->middleware(['auth', 'Role:2'])->group(function (){

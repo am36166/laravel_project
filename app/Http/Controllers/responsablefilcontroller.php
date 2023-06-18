@@ -7,7 +7,7 @@ use App\Models\intervenant;
 use Illuminate\Support\Facades\Auth;
 class responsablefilcontroller extends Controller
 {
-    //
+ 
 
         public function indexresp(){
               return view('responsablefil');
@@ -43,23 +43,6 @@ class responsablefilcontroller extends Controller
        return view('statutpaiement', compact('etudiants')); 
 
   }
-
-
-  public function validerPaiement(Request $request, $numVir)
-  {
-      $result = DB::table('declarevirements')
-                  ->where('num_vir', $numVir)
-                  ->update(['montant_valide' => 1]);
-  
-             
-      if ($result) {
-          return redirect()->route('etat')->with('success', 'Paiement validé avec succès.');
-      } else {
-          return redirect()->back()->with('error', 'Virement non trouvé.');
-      }
-  }
-
-   
 
      public function repartirMontant(Request $request) {
 
@@ -378,4 +361,22 @@ class responsablefilcontroller extends Controller
        return  view('repartirprogramme',compact('resultat'));
     }
 
+    public function calculerVacation(Request $request)
+    {
+        $tauxHoraire = $request->input('tauxHoraire');
+        $nombreHeures = $request->input('nombreHeures');
+        $typeEnseignant = $request->input('typeEnseignant');
+
+        $tauxIgr = ($typeEnseignant === 'interne') ? 0.38 : 0.3;
+        $salaire = $tauxHoraire * $nombreHeures * $tauxIgr;
+
+        return view('ajoutenseiganant',compact('salaire'));
+    }
+
+
 }
+
+
+
+
+

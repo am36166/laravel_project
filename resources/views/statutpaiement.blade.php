@@ -80,14 +80,11 @@
                                     @endif
                                 </td>
                                 <td>
-                                    @if ($paiement->montant_valide === 1)
-                                        <i class="fas fa-check-circle text-success"></i>
-                                    @else
-                                        <form action="{{ route('validerpaiement', $paiement->num_vir) }}" method="POST">
-                                            @csrf 
-                                            <button type="submit" name="paiement_valide" class="btn btn-success">Valider</button>
-                                        </form>
-                                    @endif
+                                     @if ($paiement->montant_valide === 1)
+                                                     <span class="badge bg-success">Validé</span>
+                                                      @else
+                                                <span class="badge bg-warning text-dark">En attente de validation</span>
+                                         @endif
                                 </td>
                             </tr>
                         @endforeach

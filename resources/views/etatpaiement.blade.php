@@ -85,7 +85,7 @@
                                     @else
                                         <form action="{{ route('valider_paiement', $paiement->num_vir) }}" method="POST">
                                             @csrf 
-                                            <button type="submit" name="paiement_valide" class="btn btn-success">Valider</button>
+                                           <button type="submit" name="paiement_valide" class="btn btn-success btn-sm">Valider</button>
                                         </form>
                                     @endif
                                 </td>
