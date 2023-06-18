@@ -28,67 +28,64 @@ public function repartir(Request $request)
 
          $filiereId = DB::table('filieres')->where('nom_fil', $filiere)->value('id');
 
+         $resultat = [
+            'indemnites' => [
+                'prc' => 0.4,
+                'montant_rub' => $montantTotal * 0.4
+            ],
+            'universite' => [
+                'prc' => 0.125,
+                'montant_rub' => $montantTotal * 0.125
+            ],
+            'departement' => [
+                'prc' => 0.025,
+                'montant_rub' => $montantTotal * 0.025
+            ],
+            'faculte' => [
+                'prc' => 0.25,
+                'montant_rub' => $montantTotal * 0.25
+            ],
+            'gestion_faculte' => [
+                'prc' => 0.4,
+                'montant_rub' => 0
+            ],
+            'cfc' => [
+                'prc' => 0.2,
+                'montant_rub' => 0
+            ],
+            'fonctionnaire' => [
+                'prc' => 0.2,
+                'montant_rub' => 0
+            ],
+            'gestion_filiere' => [
+                'prc' => 0.2,
+                'montant_rub' => 0
+            ],
+            'materiel' => [
+                'prc' => 0.2,
+                'montant_rub' => $montantTotal * 0.2
+            ]
+        ];
+      
+        // Répartition du montant de la rubrique faculte sur les sous-rubriques
+    $resultat['gestion_faculte']['montant_rub'] = $resultat['faculte']['montant_rub'] * $resultat['gestion_faculte']['prc'];
+    $resultat['cfc']['montant_rub'] = $resultat['faculte']['montant_rub'] * $resultat['cfc']['prc'];
+    $resultat['fonctionnaire']['montant_rub'] = $resultat['faculte']['montant_rub'] * $resultat['fonctionnaire']['prc'];
+    $resultat['gestion_filiere']['montant_rub'] = $resultat['faculte']['montant_rub'] * $resultat['gestion_filiere']['prc'];
+
          if ($montantTotal != 0) {
 
          $numProg = DB::table('progemplois')->insertGetId([
             'financ_id' => 1, 
             'filiere_id' =>  $filiereId 
         ]);
-
         DB::table('recettes')->insert([
             'total_m' => $montantTotal,
             'num_prog' => $numProg
         ]);
-
        // Comptabilise les montants 
-
      DB::table('declarevirements')->where('montant_valide', 1)->where('comptabilise', 0)->update(['comptabilise' => 1]);
 
-       // Répartition des montants sur les rubriques principales
-    $resultat = [
-        'indemnites' => [
-            'prc' => 0.4,
-            'montant_rub' => $montantTotal * 0.4
-        ],
-        'universite' => [
-            'prc' => 0.125,
-            'montant_rub' => $montantTotal * 0.125
-        ],
-        'departement' => [
-            'prc' => 0.025,
-            'montant_rub' => $montantTotal * 0.025
-        ],
-        'faculte' => [
-            'prc' => 0.25,
-            'montant_rub' => $montantTotal * 0.25
-        ],
-        'gestion_faculte' => [
-            'prc' => 0.4,
-            'montant_rub' => 0
-        ],
-        'cfc' => [
-            'prc' => 0.2,
-            'montant_rub' => 0
-        ],
-        'fonctionnaire' => [
-            'prc' => 0.2,
-            'montant_rub' => 0
-        ],
-        'gestion_filiere' => [
-            'prc' => 0.2,
-            'montant_rub' => 0
-        ],
-        'materiel' => [
-            'prc' => 0.2,
-            'montant_rub' => $montantTotal * 0.2
-        ]
-    ];
-  
-    // Répartition du montant de la rubrique faculte sur les sous-rubriques
-    $resultat['gestion_faculte']['montant_rub'] = $resultat['faculte']['montant_rub'] * $resultat['gestion_faculte']['prc'];
-    $resultat['cfc']['montant_rub'] = $resultat['faculte']['montant_rub'] * $resultat['cfc']['prc'];
-    $resultat['fonctionnaire']['montant_rub'] = $resultat['faculte']['montant_rub'] * $resultat['fonctionnaire']['prc'];
-    $resultat['gestion_filiere']['montant_rub'] = $resultat['faculte']['montant_rub'] * $resultat['gestion_filiere']['prc'];
 
     // Insérer les enregistrements dans la table "rubrique"
     DB::table('rubriques')->insert([
@@ -177,11 +174,11 @@ public function repartir(Request $request)
             'id_rub' => DB::table('rubriques')->where('nom_rub', 'materiel')->value('id_rub')
         ]
     ]);
+           
+    }
 
-}
-
-
-    return  view('repartirprog',compact('resultat'));
+         return  view('repartirprog',compact('resultat'));
+      
 }
 
 
@@ -246,8 +243,27 @@ public function repartir(Request $request)
         return view('prog');
     }
 
+    public function indexrub(){
+        return view('ajouterrubrique');
+    }
+
+    public function storerubrique(Request $request){
+        $request->validate([
+            'nom' => 'required|string|max:255'
+        ]);
+        DB::table('rubrique_variable')->insert([
+            'nom' => $request->nom
+        ]);
+
+        session()->flash('message', 'Rubrique ajoutée avec succès !');
+
+        return redirect()->back();
+    }
+
+ }
+
 
   
    
 
-}
+

@@ -41,6 +41,12 @@
                                     <p>Etat des recettes</p>
                             </a>
                         </li>
+                        </li>
+                            <li class="nav-item">
+                             <a href="{{ route('rub') }} " class="nav-link active">
+                                    <p>Gestion Des Rubriques</p>
+                            </a>
+                          </li>
                     </ul>
                 </nav>
               

@@ -75,6 +75,8 @@ Route::prefix('servicefin')->middleware(['auth', 'Role:2'])->group(function (){
     ->name('valider_paiement');
   Route::get('/etatrecette',[servicefinancier::class, 'indexrecette'])->name('recette');
   Route::post('/etatrecette',[servicefinancier::class, 'sommerecette'])->name('sommedesrecettes');
+  Route::get('/rubrique',[servicefinancier::class, 'indexrub'])->name('rub');
+  Route::post('/rubrique/store',[servicefinancier::class, 'storerubrique'])->name('rubriquestore');
 });
 
 

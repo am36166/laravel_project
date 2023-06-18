@@ -14,16 +14,7 @@
                 <input type="text" name="montant_indemnite" >
             </div>
         </div>
-        <div class="mb-3">
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" name="rubrique" value="universite" id="universite-checkbox" onclick="toggleMontantInput('universite-checkbox', 'universite-montant')">
-                <label class="form-check-label" for="universite-checkbox">Université</label>
-            </div>
-            <div class="form-text mt-2" id="universite-montant" style="display: none;">
-                Montant :
-                <input type="text" name="montant_universite">
-            </div>
-        </div>
+       
         <div class="mb-3">
             <div class="form-check">
                 <input class="form-check-input" type="checkbox" name="rubrique" value="departement" id="departement-checkbox" onclick="toggleMontantInput('departement-checkbox', 'departement-montant')">
@@ -34,16 +25,7 @@
                 <input type="text" name="montant_departement">
             </div>
         </div>
-        <div class="mb-3">
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" name="rubrique" value="faculte" id="faculte-checkbox" onclick="toggleSubRubriques('faculte-checkbox', 'faculte-montant')">
-                <label class="form-check-label" for="faculte-checkbox">Faculté</label>
-            </div>
-            <div class="form-text mt-2" id="faculte-montant" style="display: none;">
-                Montant :
-                <input type="text" name="montant_faculte" >
-            </div>
-        </div>
+      
         <div class="mb-3">
             <div class="form-check">
                 <input class="form-check-input" type="checkbox" name="rubrique" value="materiel" id="materiel-checkbox" onclick="toggleSubRubriques('materiel-checkbox', 'materiel-subrubriques')">
@@ -95,6 +77,21 @@
                             <input type="text" name="montant_pc" >
                         </div>
                     </div>
+                 <div class="mb-3">
+                    @foreach($rubriques as $rubrique)
+                        <div class="mb-3">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="sousRubrique" value="{{ $rubrique->nom }}" id="{{ $rubrique->nom }}-checkbox" onclick="toggleMontantInput('{{ $rubrique->nom }}-checkbox', '{{ $rubrique->nom }}-montant')">
+                                <label class="form-check-label" for="{{ $rubrique->nom }}-checkbox">{{ $rubrique->nom }}</label>
+                            </div>
+                            <div class="form-text mt-2" id="{{ $rubrique->nom }}-montant" style="display: none;">
+                                Montant :
+                                <input type="text" name="montant_{{ $rubrique->nom }}">
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+            </div>
                 </div>
             </div>
         </div>
