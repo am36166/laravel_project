@@ -368,11 +368,14 @@ class responsablefilcontroller extends Controller
         $typeEnseignant = $request->input('typeEnseignant');
 
         $tauxIgr = ($typeEnseignant === 'interne') ? 0.38 : 0.3;
-        $salaire = $tauxHoraire * $nombreHeures * $tauxIgr;
+        $resultat = $tauxHoraire * $nombreHeures * $tauxIgr;
+        return response()->json(['resultat' => $resultat]);
 
-        return view('ajoutenseiganant',compact('salaire'));
-    }
+   
+        }
 
+
+   
 
 }
 
