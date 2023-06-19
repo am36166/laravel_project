@@ -38,7 +38,7 @@ class Etudiantcontroller extends Controller
         'prenom_e' => $request->prenom,
         'telephone' => $request->telephone,
          'adresse' => $request->adresse,
-         'urlimg'  => $request->file('image')->store('profiletud','public'),//inserer la photo Ds le Dossier public
+         'urlimg'  => $request->file('image')->store('profiletud','public'),
         'date_naissance' => $request->datenaissance,
         'user_id' => $userid,
         'filiere_id' => $filiereId,
@@ -108,7 +108,7 @@ class Etudiantcontroller extends Controller
         $etudiant = Etudiant::findOrFail($id);
          $cne = $etudiant->cne ;
        
-         // Valider les données du formulaire
+      
          $request->validate([
             'montant' => 'required',
             'type_virement' => 'required',
@@ -117,7 +117,7 @@ class Etudiantcontroller extends Controller
         ]);
         
     
-        // Enregistrer les informations de paiement dans la table "virement"
+     
         $virement = DB::table('declarevirements')->insertGetId([
             'montant' => $request->montant,
             'type_vir' => $request->type_virement,
@@ -126,13 +126,13 @@ class Etudiantcontroller extends Controller
         ]);
 
 
-        // Enregistrer la relation de clé étrangère dans la table "etudiantvirement"
+        
         DB::table('etudiant_declarevirements')->insert([
             'num_vir' => $virement,
             'cne' => $cne,
         ]);
 
-        // Rediriger ou retourner une réponse réussie
+       
         return to_route('etudiant')->with('successpai', 'Paiement enregistré avec succès !');
  }
 

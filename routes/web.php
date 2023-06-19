@@ -38,6 +38,9 @@ Route::get('/logout',[logincon::class, 'logout'])->name('logout');
 Route::get('/form',[Etudiantcontroller::class,'index'])->name('form') ; 
 
 Route::post('/form/store',[Etudiantcontroller::class,'store'])->name('storeetud') ; 
+
+Route::post('/form/storeresp',[responsablefilcontroller::class,'compte'])->name('storeresp') ; 
+ 
  
 //restrction sur les pages qui demandent une connexion
 

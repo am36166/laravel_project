@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Models\intervenant;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash ;
 class responsablefilcontroller extends Controller
 {
  
@@ -26,22 +27,26 @@ class responsablefilcontroller extends Controller
       }
 
      public function etatpaiement(){
-      $etudiants = DB::table('etudiants')
-        ->select('cne', 'nom_e', 'prenom_e', 'urlimg')
-        ->get();
-    
-    foreach ($etudiants as $etudiant) {
-        $paiements = DB::table('etudiant_declarevirements AS ev')
-            ->join('declarevirements AS v', 'ev.num_vir', '=', 'v.num_vir')
-            ->where('ev.cne', $etudiant->cne)
-            ->select('v.montant', 'v.montant_valide','v.date_vir' ,'v.urlrecu' , 'v.num_vir')
-            ->get();
-    
-        $etudiant->paiements = $paiements;
-    }
-    
-       return view('statutpaiement', compact('etudiants')); 
+        $responsableId = Auth::user()->user_id;
 
+        $etudiants = DB::table('etudiants')
+            ->join('filieres', 'etudiants.filiere_id', '=', 'filieres.id')
+            ->join('responsablefilieres', 'filieres.id_resp', '=', 'responsablefilieres.id_resp')
+            ->where('responsablefilieres.user_id', $responsableId)
+            ->select('etudiants.cne', 'etudiants.nom_e', 'etudiants.prenom_e', 'etudiants.urlimg')
+            ->get();
+      
+        foreach ($etudiants as $etudiant) {
+            $paiements = DB::table('etudiant_declarevirements AS ev')
+                ->join('declarevirements AS v', 'ev.num_vir', '=', 'v.num_vir')
+                ->where('ev.cne', $etudiant->cne)
+                ->select('v.montant', 'v.montant_valide', 'v.date_vir', 'v.urlrecu', 'v.num_vir')
+                ->get();
+    
+            $etudiant->paiements = $paiements;
+        }
+    
+        return view('statutpaiement', compact('etudiants'));
   }
 
      public function repartirMontant(Request $request) {
@@ -373,11 +378,49 @@ class responsablefilcontroller extends Controller
 
    
         }
+         
+        public function compte(Request $request)
+        {
+           
+            $request->validate([
+                'nom' => 'required',
+                'prenom' => 'required',
+                'username' => 'required|unique:users',
+                'password' => 'required|confirmed',
+            ]);
+    
+           
+            $user = [
+                'username' => $request->username,
+                'password' => Hash::make($request->password),
+                'role' => 1,
+            ];
+            $user = DB::table('users')->insertGetId($user);
+    
+           
+            $responsable = [
+                'nom_resp' => $request->nom,
+                'prenom_resp' => $request->prenom,
+                'user_id' => $user,
+            ];
 
+            DB::table('responsablefilieres')->insert($responsable);
+            $responsableId = DB::getPdo()->lastInsertId();
+
+            $filiere = [
+                'nom_fil' => $request->filiere,
+                'id_resp' => $responsableId,
+                'montant_form' => '25000',
+            ];
+            DB::table('filieres')->insert($filiere);
+    
+              return to_route('form')->with('reussie','Votre Compte a ete Bien Enregistre');
+        }
+    }
 
    
 
-}
+
 
 
 

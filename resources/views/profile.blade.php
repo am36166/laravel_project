@@ -62,7 +62,7 @@
         <div class="profile-details">
             <h6>Nom et Prenom :</h6>
             <p>{{ $etudiant->nom_e }} {{ $etudiant->prenom_e }}</p>
-            <h6>Phone</h6>
+            <h6>Telephone :</h6>
             <p>{{ $etudiant->telephone }}</p>
             <h6>Date de naissance</h6>
             <p>{{ $etudiant->date_naissance }}</p>
