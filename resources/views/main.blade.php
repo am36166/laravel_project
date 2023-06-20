@@ -54,6 +54,39 @@
         font-size: 18px;
         color: #6c757d;
     }
+    .wrapper {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            background-color: #f5f5f5;
+        }
+        .content-wrapper {
+            flex-grow: 1;
+            padding: 20px;
+        }
+     
+        .alert {
+            margin-bottom: 10px;
+            border-radius: 5px;
+        }
+        
+        .main-header.navbar {
+            background-color: #333;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .main-header.navbar .nav-link {
+            color: #fff;
+            transition: color 0.3s ease;
+        }
+        .main-header.navbar .nav-link:hover {
+            color: #ffc107;
+        }
+        .main-sidebar.sidebar-dark-primary {
+            background-color: #333;
+        }
+        .main-sidebar.sidebar-dark-primary .nav-sidebar .nav-link {
+            color: #fff;
+        }
 
 </style>
 </head>

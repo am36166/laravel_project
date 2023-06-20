@@ -12,7 +12,9 @@
     <div class="col-lg-4 col-md-6 col-sm-8">
       <div class="card">
         <div class="card-body">
-          <h4 class="card-title text-center mb-4">S'authentifier</h4>
+            <div class="text-center mb-4">
+           <i class="fa-solid fa-user fa-xl"></i>
+          </div>
           <form method="POST" action="{{ route('login') }}">
             @csrf
             @if (session()->has('Erreurs'))

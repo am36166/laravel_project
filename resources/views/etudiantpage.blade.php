@@ -233,7 +233,6 @@ body {
                                     {{ session('nok') }}
                                 </div>
                                 @endif
-
                                 @yield('studentcontent')
                             </div>
                         </div>
