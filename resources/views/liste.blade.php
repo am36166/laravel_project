@@ -21,18 +21,14 @@
                 @endif
    
 <section class="content">
-   <div class="container ">
-         <div class="container-fluid">
-                  <h1>Liste des étudiants</h1>
-         </div>
-
-    <div class="row">
-        <div class="col-10">
-            <div class="mb-3">
-                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalAjoutEtudiant">Ajouter un étudiant</button>
-            </div>
+  
+        <div class="row">
+                <div class="col-10">
+                     <div class="mb-3">
+                          <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalAjoutEtudiant"><i class="fas fa-plus"></i> Ajouter un étudiant</button>
+                    </div>
+               </div>
         </div>
-    </div>
 
 
        <div class="row">
@@ -64,8 +60,8 @@
                                 <button class="btn btn-primary btn-sm" type="button" data-bs-toggle="modal" data-bs-target="#form2"
                                     data-id="{{ $etudiant->id }}" data-nom="{{ $etudiant->nom_e }}"
                                     data-prenom="{{ $etudiant->prenom_e }}" data-adresse="{{ $etudiant->adresse }}"
-                                    data-telephone="{{ $etudiant->telephone }}">Modifier</button>
-                                <button class="btn btn-danger btn-sm" onclick="confirmerSuppression({{ $etudiant->id }})">Supprimer</button>
+                                    data-telephone="{{ $etudiant->telephone }}"> <i class="fas fa-edit"></i></button>
+                                <button class="btn btn-danger btn-sm" onclick="confirmerSuppression({{ $etudiant->id }})">  <i class="fas fa-trash-alt"></i></button>
                             </td>
                         </tr>
                     @endforeach

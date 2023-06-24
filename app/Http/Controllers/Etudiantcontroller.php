@@ -23,7 +23,7 @@ class Etudiantcontroller extends Controller
     }
 
      public function store(Request $request){
-      
+
            $userid = DB::table('users')->insertGetId([
           'username' => $request->input('login'),
           'password' => Hash::make($request->input('password')),

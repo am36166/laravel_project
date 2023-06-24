@@ -58,13 +58,10 @@ class Generpdf extends Controller
 
     $dompdf->loadHtml($html);
 
-    // Définit la taille et l'orientation du papier
     $dompdf->setPaper('A4', 'portrait');
 
-    // Rend le contenu HTML en PDF
     $dompdf->render();
 
-    // Obtient le contenu PDF généré
     $pdfContent = $dompdf->output();
 
     $dompdf->stream('inscription_etudiant.pdf');

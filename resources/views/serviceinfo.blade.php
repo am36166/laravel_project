@@ -1,7 +1,7 @@
 @extends('main')
 @section('title','Service Informatique')
 @section('studentcontent')
-          <div class="wrapper">
+    <div class="wrapper">
   
         <nav class="main-header navbar navbar-expand navbar-dark bg-dark">
            

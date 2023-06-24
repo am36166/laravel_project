@@ -211,7 +211,7 @@ class responsablefilcontroller extends Controller
         ->where('filieres.nom_fil', $filiere->nom_fil)
         ->where('declarevirements.comptabilise', 0)
         ->where('declarevirements.montant_valide', 1)
-       ->sum('declarevirements.montant');
+        ->sum('declarevirements.montant');
      
    
        $resultat = [
