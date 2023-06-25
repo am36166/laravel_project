@@ -2,6 +2,7 @@
 @section('respfil')
  <div class="container">
     <h1>Rubriques et montants</h1>
+    
     <form method="POST" action="{{ route('rep') }}">
         @csrf
         <div class="mb-3">

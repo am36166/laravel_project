@@ -87,6 +87,49 @@
         .main-sidebar.sidebar-dark-primary .nav-sidebar .nav-link {
             color: #fff;
         }
+        .table {
+    font-size: 14px;
+}
+
+.table thead th {
+    vertical-align: middle;
+}
+
+.table tbody td {
+    vertical-align: middle;
+}
+
+.table .img {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.table .fa-check-circle {
+    color: green;
+}
+
+.table .fa-times-circle {
+    color: red;
+}
+
+.table .badge {
+    font-size: 12px;
+    padding: 6px 12px;
+    border-radius: 4px;
+    text-transform: uppercase;
+}
+
+.table .badge.bg-success {
+    background-color: green;
+    color: white;
+}
+
+.table .badge.bg-danger {
+    background-color: red;
+    color: white;
+}
 
 </style>
 </head>

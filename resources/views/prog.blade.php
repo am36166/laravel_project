@@ -1,7 +1,5 @@
 @extends('servicefinancier')
 @section('servfin')
-<h1>Repartition</h1>
-
 <form id="repartition-form" action="{{ route('repartirprog') }}" method="POST">
     @csrf
     <div class="form-group">

@@ -1,7 +1,6 @@
 @extends('responsablefil')
 @section('respfil')
  
-     <h1>Etat du programme d'emploi</h1>
     <div class="container">
         <div class="row d-flex justify-content-between">
             <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">

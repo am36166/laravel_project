@@ -81,7 +81,7 @@
                                 </td>
                                 <td>
                                      @if ($paiement->montant_valide === 1)
-                                                     <span class="badge bg-success">Validé</span>
+                                                     <i class="fas fa-check-circle text-success"></i>
                                                       @else
                                                 <span class="badge bg-warning text-dark">En attente de validation</span>
                                          @endif
