@@ -58,6 +58,7 @@
             justify-content: center;
         }
     </style>
+    @yield('style')
 <body> 
    @yield('content')
 </body>

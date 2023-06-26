@@ -1,12 +1,12 @@
 @extends('mainpage')
 @section('content')
- @if (session()->has('success'))
+        @if (session()->has('success'))
             <div class="container">
-              <div class="row alert alert-danger my-3">
-                {{ session('success') }}
-              </div>
+                <div class="row alert alert-danger my-3">
+                   {{ session('success') }}
+                 </div>
             </div>
-  @endif
+        @endif
 <div class="container my-5">
   <div class="row justify-content-center">
     <div class="col-lg-4 col-md-6 col-sm-8">
@@ -44,5 +44,12 @@
     </div>
   </div>
 </div>
-
 @endsection
+
+
+
+
+
+
+
+

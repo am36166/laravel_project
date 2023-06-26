@@ -1,4 +1,4 @@
-  <form>
+<form>
         <div class="modal-body">
                     @csrf
                 <div class="mb-1">

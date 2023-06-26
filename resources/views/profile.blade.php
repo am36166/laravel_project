@@ -53,7 +53,7 @@
   </style>
   @endsection
   
-  @section('studentcontent')
+  @section('content')
   <div class="profile-container">
       <div class="profile-card">
           <div class="profile-picture">
