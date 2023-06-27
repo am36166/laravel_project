@@ -3,7 +3,6 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
         <!--==================== UNICONS ====================-->
         <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
         
@@ -108,6 +107,34 @@
         </div>
             </nav>
         </header>
+    
+        <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="card-body">    
+                                @if (session()->has('update'))
+                                <div class="alert alert-success my-3">
+                                    {{ session('update') }}
+                                </div>
+                                @endif
+
+                             @if (session()->has('successpai'))
+                                <div class="alert alert-success my-3">
+                                    {{ session('successpai') }}
+                                </div>
+                                @endif
+
+                                @if (session()->has('error'))
+                                <div class="alert alert-success my-3">
+                                    {{ session('error') }}
+                                </div>
+                                @endif
+
+                                @if (session()->has('nok'))
+                                <div class="alert alert-success my-3">
+                                    {{ session('nok') }}
+                                </div>
+                                @endif
 
         <!--==================== MAIN ====================-->
         <main class="main">

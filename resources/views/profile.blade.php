@@ -1,15 +1,12 @@
-@extends('etudiantpage')
-@section('title', 'Espace étudiant')
+@extends('navfooter')
 @section('style')
   <style>
   .profile-container {
-      max-width: 400px;
-      margin: 0 auto;
-      padding: 20px;
-      opacity: 0; 
-      transition: opacity 0.5s ease-out;
-  }
-  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh; 
+}
   
   .profile-picture {
       width: 100px;
