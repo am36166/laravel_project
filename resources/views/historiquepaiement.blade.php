@@ -1,5 +1,6 @@
-@extends('navfooter')
-@section('content')
+@extends('etudiantpage')
+@section('title','Historique paiement')
+@section('studentcontent')
 
  <div class="container">
         <h1>Historique des paiements</h1>

@@ -1,6 +1,6 @@
-@extends('navfooter')
-
-@section('content')
+@extends('etudiantpage')
+@section('title','Paiement')
+@section('studentcontent')
  
    
 <form action="{{ route('paiementstore',['id' => $etudiant->id]) }}" method="POST" enctype="multipart/form-data">

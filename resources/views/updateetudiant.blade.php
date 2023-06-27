@@ -1,5 +1,6 @@
-@extends('navfooter')
-@section('content')
+@extends('etudiantpage')
+@section('title','Modifier vos informations')
+@section('studentcontent')
 <div class="container m-3">
   <form class="p-3 border rounded-3" method="POST" action="{{ route('updatestore',['id' => $etudiant->id]) }}">
     @csrf

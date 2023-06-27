@@ -20,17 +20,17 @@ class Responsable extends Seeder
              'prenom_resp' => 'Khalid',
          ]);
       */   
-         DB::table('responsablefilieres')->insert([
+       /*  DB::table('responsablefilieres')->insert([
             'user_id' => 15,
             'nom_resp' => 'Yassin',
              'prenom_resp' => 'Sadil',
          ]);
-
-         DB::table('responsablefilieres')->insert([
+      */
+        /* DB::table('responsablefilieres')->insert([
             'user_id' => 16,
             'nom_resp' => 'taha',
              'prenom_resp' => 'Sadil',
          ]);
- 
+       */
     }
 }

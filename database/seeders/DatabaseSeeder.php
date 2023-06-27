@@ -28,33 +28,33 @@ class DatabaseSeeder extends Seeder
       ]);
      */ 
 
-     /*  DB::table('users')->insert([
+     DB::table('users')->insert([
            'username' => 'Servicefinancier',
            'password' => Hash::make('service123'),
            'role'     => '2',
         ]);
-       */ 
+      
 
-    /* DB::table('users')->insert([
+   DB::table('users')->insert([
             'username' => 'Serviceinformatique',
             'password' => Hash::make('adminadmin'),
             'role'     => '3',
         ]);
-    */
+   
      
-    DB::table('users')->insert([
+ /*   DB::table('users')->insert([
         'username' => 'Responsable2',
          'password' => Hash::make('responsable2'),
            'role'     => '1',
     ]);
+*/
 
-
-    DB::table('users')->insert([
+  /* DB::table('users')->insert([
         'username' => 'Responsable3',
          'password' => Hash::make('responsable3'),
            'role'     => '1',
     ]);
-       
+    */   
         
 
         

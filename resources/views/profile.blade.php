@@ -1,4 +1,5 @@
-@extends('navfooter')
+@extends('etudiantpage')
+@section('title','Profile')
 @section('style')
   <style>
   .profile-container {
@@ -50,7 +51,7 @@
   </style>
   @endsection
   
-  @section('content')
+  @section('studentcontent')
   <div class="profile-container">
       <div class="profile-card">
           <div class="profile-picture">
