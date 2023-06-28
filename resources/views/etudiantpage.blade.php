@@ -138,6 +138,21 @@ body {
 .card-text a:hover {
   color: #999;
 }
+  .main-header.navbar.expanded {
+        flex-grow: 1;
+    }
+
+    /* Styles pour la sidebar réduite */
+    .main-sidebar.collapsed {
+        width: 50px;
+        transition: width 0.3s ease;
+    }
+
+    /* Styles pour le contenu agrandi */
+    .content-wrapper.expanded {
+        margin-left: 50px;
+        transition: margin-left 0.3s ease;
+    }
 @yield('style')
 </style>
 </head>
@@ -146,14 +161,14 @@ body {
         <nav class="main-header navbar navbar-expand navbar-dark bg-dark">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+                    <a class="nav-link" data-widget="pushmenu" href="#" role="button" id="sidebarToggle"><i class="fas fa-bars"></i></a>
                 </li>
             </ul>
         </nav>
         <!-- /.navbar -->
 
         <!-- Main Sidebar Container -->
-        <aside class="main-sidebar sidebar-dark-primary elevation-4">
+        <aside class="main-sidebar sidebar-dark-primary elevation-4"  id="sidebar">
             <a href="#" class="brand-link">
                 <span class="brand-text font-weight-light">
                     <img src="{{ asset('storage/'.$etudiant->urlimg) }}" class="img" alt="Student Profile">
@@ -241,5 +256,15 @@ body {
             </section>
         </div>
     </div>
+    <script>
+        document.getElementById("sidebarToggle").addEventListener("click", function() {
+            var sidebar = document.getElementById("sidebar");
+            if (sidebar.style.display === "none") {
+                sidebar.style.display = "block";
+            } else {
+                sidebar.style.display = "none";
+            }
+        });
+    </script>
 </body>
 </html>
