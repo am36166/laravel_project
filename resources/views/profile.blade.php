@@ -1,7 +1,8 @@
 @extends('etudiantpage')
 @section('title','Profile')
 @section('style')
-  <style>
+<style>
+<style>
   .profile-container {
   display: flex;
   align-items: center;
@@ -48,11 +49,10 @@
       color: #555;
       text-align: center;
   }
-  </style>
-  @endsection
-  
-  @section('studentcontent')
-  <div class="profile-container">
+</style>
+@endsection
+@section('studentcontent')
+ <div class="profile-container">
       <div class="profile-card">
           <div class="profile-picture">
               <img src="{{ asset('storage/'.$etudiant->urlimg) }}" alt="Profile Picture">
@@ -69,5 +69,4 @@
           </div>
       </div>
   </div>
-    
 @endsection
