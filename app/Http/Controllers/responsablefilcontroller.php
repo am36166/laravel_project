@@ -63,8 +63,8 @@ class responsablefilcontroller extends Controller
         $montantBureau = $request->input('montant_bureau', 0);
         $montantPC = $request->input('montant_pc', 0);
      
-        $montantsRubriques = []; // table pour stocker les Rubriques et les montans octroyees a ces dernieres apres la repartition
-        $errors = [] ;   // Gestion d'erreur si l'utilisateur demande un ,ontqnt aui depasse le plafond
+        $montantsRubriques = []; // table pour stocker les Rubriques et les montants octroyees a ces dernieres apres la repartition
+        $errors = [] ;   // Gestion d'erreur si l'utilisateur demande un montant qui depasse le plafond
 
        
         $montantsRubriques['indemnite'] =  $montantTotal * 0.4;

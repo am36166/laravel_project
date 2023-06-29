@@ -2,7 +2,6 @@
 @section('title','Profile')
 @section('style')
 <style>
-<style>
   .profile-container {
   display: flex;
   align-items: center;

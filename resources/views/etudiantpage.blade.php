@@ -14,7 +14,7 @@
             border-radius: 50%;
             object-fit: cover;
         }
-       .wrapper {
+        .wrapper {
             min-height: 100vh;
             display: flex;
             flex-direction: column;
@@ -24,7 +24,6 @@
             flex-grow: 1;
             padding: 20px;
         }
-     
         .alert {
             margin-bottom: 10px;
             border-radius: 5px;
@@ -52,113 +51,108 @@
             display: block;
             margin: 0 auto;
             max-width: 200px;
-            }
-@import url(https://fonts.googleapis.com/css?family=PT+Sans+Narrow:700,400|Titillium+Web:400,600,700,300);
-@import url(https://fonts.googleapis.com/css?family=Dosis:400,300,500);
+        }
+        @import url(https://fonts.googleapis.com/css?family=PT+Sans+Narrow:700,400|Titillium+Web:400,600,700,300);
+        @import url(https://fonts.googleapis.com/css?family=Dosis:400,300,500);
 
-* {
-  box-sizing: border-box;
-}
+        * {
+          box-sizing: border-box;
+        }
 
-::-webkit-input-placeholder {
-  color: #e4e4e4;
-}
+        ::-webkit-input-placeholder {
+          color: #e4e4e4;
+        }
 
-body {
-  width: 100%;
-  height: 100%;
-  margin: 0;
-  padding: 0;
-  font-family: 'Dosis', sans-serif;
-}
+        body {
+          width: 100%;
+          height: 100%;
+          margin: 0;
+          padding: 0;
+          font-family: 'Dosis', sans-serif;
+        }
 
-.card {
-  width: 400px;
-  margin: 50px auto;
-  text-align: center;
-  padding: 10px;
-  color: #000; /* Modifier la couleur du texte */
-  box-shadow: 0 0 10px rgba(55, 55, 55, .5);
-  background-color: #fff; /* Ajouter une couleur de fond */
-  border-radius: 4px;
-}
+        .card {
+          width: 400px;
+          margin: 50px auto;
+          text-align: center;
+          padding: 10px;
+          color: #000;
+          box-shadow: 0 0 10px rgba(55, 55, 55, .5);
+          background-color: #fff;
+          border-radius: 4px;
+        }
 
-.card-img-top {
-  width: 80px;
-  height: 80px;
-  margin: 10px auto;
-  margin-top: -30px;
-  border-radius: 50%;
-  border: 2px solid #000; /* Modifier la couleur de la bordure */
-  transition: .3s;
-}
+        .card-img-top {
+          width: 80px;
+          height: 80px;
+          margin: 10px auto;
+          margin-top: -30px;
+          border-radius: 50%;
+          border: 2px solid #000;
+          transition: .3s;
+        }
 
-.card-img-top:hover {
-  cursor: pointer;
-  transform: translateY(-10px) scale(1.3);
-}
+        .card-img-top:hover {
+          cursor: pointer;
+          transform: translateY(-10px) scale(1.3);
+        }
 
-.card-title {
-  font-size: 30px;
-  padding: 5px;
-  font-family: 'PT Sans Narrow', sans-serif;
-  margin-bottom: 10px;
-}
+        .card-title {
+          font-size: 30px;
+          padding: 5px;
+          font-family: 'PT Sans Narrow', sans-serif;
+          margin-bottom: 10px;
+        }
 
-.card-text {
-  font-size: 16px;
-  line-height: 1.4;
-  color: #000; /* Modifier la couleur du texte */
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
+        .card-text {
+          font-size: 16px;
+          line-height: 1.4;
+          color: #000;
+          margin: 0;
+          padding: 0;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+        }
 
-.card-text p {
-  margin: 5px 0;
-}
+        .card-text p {
+          margin: 5px 0;
+        }
 
-.card-text p:nth-child(2) {
-  font-weight: bold;
-  font-size: 18px;
-}
+        .card-text p:nth-child(2) {
+          font-weight: bold;
+          font-size: 18px;
+        }
 
-.card-text p:last-child {
-  font-weight: 500;
-  font-size: 16px;
-  margin-top: 10px;
-}
+        .card-text p:last-child {
+          font-weight: 500;
+          font-size: 16px;
+          margin-top: 10px;
+        }
 
-.card-text a {
-  transition: .2s;
-}
+        .card-text a {
+          transition: .2s;
+        }
 
-.card-text a:hover {
-  color: #999;
-}
-  .main-header.navbar.expanded {
-        flex-grow: 1;
-    }
+        .card-text a:hover {
+          color: #999;
+        }
 
-    /* Styles pour la sidebar réduite */
-    .main-sidebar.collapsed {
-        width: 50px;
-        transition: width 0.3s ease;
-    }
+        .main-header.navbar.expanded {
+            flex-grow: 1;
+        }
 
-    /* Styles pour le contenu agrandi */
-    .content-wrapper.expanded {
-        margin-left: 50px;
-        transition: margin-left 0.3s ease;
-    }
-@yield('style')
-</style>
+        /* Styles pour la sidebar réduite */
+        .main-sidebar.collapsed {
+            width: 50px;
+            transition: width 0.3s ease;
+        }
+        @yield('style')
+    </style>
 </head>
 <body>  
     <div class="wrapper">
-        <nav class="main-header navbar navbar-expand navbar-dark bg-dark">
+       <nav class="main-header navbar navbar-expand navbar-dark bg-dark ">
             <ul class="navbar-nav">
                 <li class="nav-item">
                     <a class="nav-link" data-widget="pushmenu" href="#" role="button" id="sidebarToggle"><i class="fas fa-bars"></i></a>

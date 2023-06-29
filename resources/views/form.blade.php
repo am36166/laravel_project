@@ -6,51 +6,51 @@
                  {{ session('reussie') }}
             </div>
       @endif
-  <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="card">
-                    <div class="card-header text-center">Inscription</div>
+ <div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header text-center">Inscription</div>
 
-                    <div class="card-body p-4">
-                        <div class="form-group my-4">
-                            <label for="user-type">Type d'utilisateur :</label>
-                            <select id="user-type" class="form-control">
-                                <option value="etudiant">Etudiant</option>
-                                <option value="responsable">Responsable</option>
-                            </select>
-                        </div>
+                <div class="card-body p-4">
+                    <div class="form-group my-4">
+                        <label for="user-type">Type d'utilisateur :</label>
+                        <select id="user-type" class="form-control">
+                            <option value="etudiant">Etudiant</option>
+                            <option value="responsable">Responsable</option>
+                        </select>
+                    </div>
 
-                        <div id="etudiant-form" style="display: none;">
-                            <form method="POST" action="{{ route('storeetud') }}" enctype="multipart/form-data">
-                                @csrf
+                    <div id="etudiant-form" style="display: none;">
+                        <form method="POST" action="{{ route('storeetud') }}" enctype="multipart/form-data">
+                            @csrf
 
-                                <div class="form-group my-2">
-                                    <label for="cin">CIN :</label>
-                                    <input type="text" name="cne" id="cin" class="form-control" required>
-                                </div>
+                            <div class="form-group my-2">
+                                <label for="cin">CIN :</label>
+                                <input type="text" name="cne" id="cin" class="form-control" required>
+                            </div>
 
-                                <div class="form-group my-2">
-                                    <label for="nom">Nom :</label>
-                                    <input type="text" name="nom" id="nom" class="form-control" required>
-                                </div>
+                            <div class="form-group my-2">
+                                <label for="nom">Nom :</label>
+                                <input type="text" name="nom" id="nom" class="form-control" required>
+                            </div>
 
-                                <div class="form-group my-2">
-                                    <label for="prenom">Prénom :</label>
-                                    <input type="text" name="prenom" class="form-control" required>
-                                </div>
+                            <div class="form-group my-2">
+                                <label for="prenom">Prénom :</label>
+                                <input type="text" name="prenom" class="form-control" required>
+                            </div>
 
-                                <div class="form-group my-2">
-                                    <label for="datenaissance">Date de Naissance :</label>
-                                    <input type="date" name="datenaissance" class="form-control" required>
-                                </div>
+                            <div class="form-group my-2">
+                                <label for="datenaissance">Date de Naissance :</label>
+                                <input type="date" name="datenaissance" class="form-control" required>
+                            </div>
 
-                                <div class="form-group my-2">
-                                    <label for="filiere">Filière :</label>
-                                      <select name="filiere" >
-                                      <option selected disabled class="selected">Choisir la filiére</option>
-                                          <optgroup label="licence prefessionnelle:">
-                                          <optgroup label="Informatique:">
+                            <div class="form-group my-2">
+                                <label for="filiere">Filière :</label>
+                                <select name="filiere" class="form-control" required>
+                                    <option selected disabled>Choisir la filière</option>
+                                    <optgroup label="Licence professionnelle:">
+                                        <optgroup label="Informatique:">
                                             <option value="aasri">AASRI</option>
                                             <option value="asbdr">ASBDR</option>
                                             <option value="daabd">DAABD</option>
@@ -61,83 +61,84 @@
                                             <option value="ircc">IRCC</option>
                                             <option value="taw">TAW</option>
                                             <option value="fs-devops">FS and DEVOP</option>
-                                           <option value="mispp">MISPP</option>
+                                            <option value="mispp">MISPP</option>
+                                        </optgroup>
+                                        <optgroup label="Sciences de l'ingénieur">
+                                            <option value="lpeeaii">LPEEAII</option>
+                                            <option value="gc">GC</option>
+                                            <option value="gese">GESE</option>
+                                            <option value="gil">GIL</option>
+                                            <option value="ga">GA</option>
+                                            <option value="gamur">GAMUR</option>
+                                            <option value="tmbtp">TMBTP</option>
+                                        </optgroup>
                                     </optgroup>
-                                     <optgroup label="Sciences de l'ingénieur">
-                                          <option value="lpeeaii">LPEEAII</option>
-                                          <option value="gc">GC</option>
-                                          <option value="gese">GESE</option>
-                                          <option value="gil">GIL</option>
-                                          <option value="ga">GA</option>
-                                          <option value="gamur">GAMUR</option>
-                                    <option value="tmbtp">TMBTP</option>
-                                   </optgroup>
-                                   <optgroup label="Masters spécialisés">
-                                      <optgroup label="Informatique:">
-                                         <option value="bd2c">BD2C</option>
-                                         <option value="bisd">BISD</option>
-                                         <option value="msi">MSI</option>
-                                     </optgroup>
-                                 <optgroup label="Sciences de l'ingénieur">
-                                         <option value="meeaii">MEEAII</option>
-                                         <option value="gl">GL</option>
-                                        <option value="ier">IER</option>
-                                        <option value="msm">MSM</option>
-                                <option value="bimae">BIMAE</option>
-                             </optgroup>
-                          </optgroup>
-                       </select>
-                                </div>
+                                    <optgroup label="Masters spécialisés">
+                                        <optgroup label="Informatique:">
+                                            <option value="bd2c">BD2C</option>
+                                            <option value="bisd">BISD</option>
+                                            <option value="msi">MSI</option>
+                                        </optgroup>
+                                        <optgroup label="Sciences de l'ingénieur">
+                                            <option value="meeaii">MEEAII</option>
+                                            <option value="gl">GL</option>
+                                            <option value="ier">IER</option>
+                                            <option value="msm">MSM</option>
+                                            <option value="bimae">BIMAE</option>
+                                        </optgroup>
+                                    </optgroup>
+                                </select>
+                            </div>
 
-                                <div class="form-group my-2">
-                                    <label for="adresse">Adresse :</label>
-                                    <textarea name="adresse" id="adresse" class="form-control" rows="1" required></textarea>
-                                </div>
+                            <div class="form-group my-2">
+                                <label for="adresse">Adresse :</label>
+                                <textarea name="adresse" id="adresse" class="form-control" rows="1" required></textarea>
+                            </div>
 
-                                <div class="form-group my-2">
-                                    <label for="photo">Photo :</label>
-                                    <input type="file" name="image" class="form-control-file">
-                                </div>
+                            <div class="form-group my-2">
+                                <label for="photo">Photo :</label>
+                                <input type="file" name="image" class="form-control-file">
+                            </div>
 
-                                <div class="form-group my-2">
-                                    <label for="telephone">Numéro de téléphone :</label>
-                                    <input type="text" name="telephone" class="form-control" required>
-                                </div>
+                            <div class="form-group my-2">
+                                <label for="telephone">Numéro de téléphone :</label>
+                                <input type="text" name="telephone" class="form-control" required>
+                            </div>
 
-                                <div class="form-group my-2">
-                                    <label for="login">Nom d'utilisateur :</label>
-                                    <input type="text" name="login" class="form-control" required>
-                                </div>
+                            <div class="form-group my-2">
+                                <label for="login">Nom d'utilisateur :</label>
+                                <input type="text" name="login" class="form-control" required>
+                            </div>
 
-                                <div class="form-group my-2">
-                                    <label for="password">Mot de passe :</label>
-                                    <input type="password" name="password" class="form-control" required>
-                                </div>
+                            <div class="form-group my-2">
+                                <label for="password">Mot de passe :</label>
+                                <input type="password" name="password" class="form-control" required>
+                            </div>
 
-                                <button type="submit" class="btn btn-primary my-4 ">Inscription</button>
-                            </form>
-                        </div>
+                            <button type="submit" class="btn btn-primary my-4">Inscription</button>
+                        </form>
+                    </div>
 
-                        <div id="responsable-form" style="display: none;">
-                            <form method="POST" action="{{ route('storeresp') }}">
-                                @csrf
+                    <div id="responsable-form" style="display: none;">
+                        <form method="POST" action="{{ route('storeresp') }}">
+                            @csrf
 
-                                <div class="form-group my-2">
-                                    <label for="nom">Nom :</label>
-                                    <input type="text" name="nom" id="nom" class="form-control" required>
-                                </div>
+                            <div class="form-group my-2">
+                                <label for="nom">Nom :</label>
+                                <input type="text" name="nom" id="nom" class="form-control" required>
+                            </div>
 
-                                <div class="form-group my-2">
-                                    <label for="prenom">Prénom :</label>
-                                    <input type="text" name="prenom" class="form-control" required>
-                                </div>
+                            <div class="form-group my-2">
+                                <label for="prenom">Prénom :</label>
+                                <input type="text" name="prenom" class="form-control" required>
+                            </div>
 
-                                <div class="form-group my-2">
-                                  <label for="filiere">Filière :</label>
-                                  <select name="filiere" >
-                                      <option selected disabled class="selected">Choisir la filiére</option>
-                                          <optgroup label="licence prefessionnelle:">
-                                          <optgroup label="Informatique:">
+                            <div class="form-group my-2">
+                                <label for="filiere">Filière :</label>
+                                <select name="filiere" class="form-control" required>
+                                    <option selected disabled>Choisir la filière</option>
+                                    <optgroup label="Licence professionnelle:">
+                                        <optgroup label="Informatique:">
                                             <option value="aasri">AASRI</option>
                                             <option value="asbdr">ASBDR</option>
                                             <option value="daabd">DAABD</option>
@@ -148,32 +149,32 @@
                                             <option value="ircc">IRCC</option>
                                             <option value="taw">TAW</option>
                                             <option value="fs-devops">FS and DEVOP</option>
-                                           <option value="mispp">MISPP</option>
-                                    </optgroup>
-                                     <optgroup label="Sciences de l'ingénieur">
-                                          <option value="lpeeaii">LPEEAII</option>
-                                          <option value="gc">GC</option>
-                                          <option value="gese">GESE</option>
-                                          <option value="gil">GIL</option>
-                                          <option value="ga">GA</option>
-                                          <option value="gamur">GAMUR</option>
-                                    <option value="tmbtp">TMBTP</option>
-                                   </optgroup>
-                                   <optgroup label="Masters spécialisés">
-                                      <optgroup label="Informatique:">
-                                         <option value="bd2c">BD2C</option>
-                                         <option value="bisd">BISD</option>
-                                         <option value="msi">MSI</option>
-                                     </optgroup>
-                                 <optgroup label="Sciences de l'ingénieur">
-                                         <option value="meeaii">MEEAII</option>
-                                         <option value="gl">GL</option>
-                                        <option value="ier">IER</option>
-                                        <option value="msm">MSM</option>
-                                <option value="bimae">BIMAE</option>
-                             </optgroup>
-                          </optgroup>
-                       </select>
+                                            <option value="mispp">MISPP</option>
+                                        </optgroup>
+                                        <optgroup label="Sciences de l'ingénieur">
+                                            <option value="lpeeaii">LPEEAII</option>
+                                            <option value="gc">GC</option>
+                                            <option value="gese">GESE</option>
+                                            <option value="gil">GIL</option>
+                                            <option value="ga">GA</option>
+                                            <option value="gamur">GAMUR</option>
+                                            <option value="tmbtp">TMBTP</option>
+                                        </optgroup>
+                                        <optgroup label="Masters spécialisés">
+                                            <optgroup label="Informatique:">
+                                                <option value="bd2c">BD2C</option>
+                                                <option value="bisd">BISD</option>
+                                                <option value="msi">MSI</option>
+                                            </optgroup>
+                                            <optgroup label="Sciences de l'ingénieur">
+                                                <option value="meeaii">MEEAII</option>
+                                                <option value="gl">GL</option>
+                                                <option value="ier">IER</option>
+                                                <option value="msm">MSM</option>
+                                                <option value="bimae">BIMAE</option>
+                                            </optgroup>
+                                        </optgroup>
+                                    </select>
                                 </div>
 
                                 <div class="form-group my-2">
@@ -217,6 +218,7 @@
             }
         });
     </script>
+
 
 @endsection
 
