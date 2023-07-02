@@ -86,7 +86,7 @@ class Etudiantcontroller extends Controller
             $etudiant->telephone = $request->telephone ;
             $etudiant->save() ;
             
-                return to_route('etudiant')->with('update','Les informations ont été mises à jour avec succès');
+                return to_route('page')->with('update','Les informations ont été mises à jour avec succès');
         }
            return to_route('profile');
 
@@ -133,7 +133,7 @@ class Etudiantcontroller extends Controller
         ]);
 
        
-        return to_route('etudiant')->with('successpai', 'Paiement enregistré avec succès !');
+        return to_route('page')->with('successpai', 'Paiement enregistré avec succès !');
  }
 
 
@@ -144,7 +144,7 @@ class Etudiantcontroller extends Controller
         $infosvirements=declarevirement::whereIn('num_vir',$etudiantVirement)->get();
         if( $etudiantVirement) return view('historiquepaiement',compact('infosvirements','etudiant'));
        
-         return to_route('etudiant')->with('nok','Vous n\'avez effectuer aucun paiement');
+         return to_route('page')->with('nok','Vous n\'avez effectuer aucun paiement');
 
      }
 
@@ -170,6 +170,16 @@ class Etudiantcontroller extends Controller
         return redirect()->route('login')->with('success', 'Votre mot de passe a été réinitialisé avec succès. Veuillez vous connecter avec votre nouveau mot de passe.');
     }
 
+
+    public function displaypage(){
+        $user = Auth::User()->user_id ; 
+      $etudiant = DB::table('etudiants')
+              ->join('users', 'users.user_id', '=', 'etudiants.user_id')
+             ->select('etudiants.*')
+             ->where('etudiants.user_id', $user)
+             ->first();
+        return view('etudiantpage',compact('etudiant'));
+    }
 
 
 

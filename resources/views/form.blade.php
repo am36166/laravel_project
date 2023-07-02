@@ -6,6 +6,10 @@
                  {{ session('reussie') }}
             </div>
       @endif
+    <video autoplay loop muted playsinline id="background-video">
+    <source src="{{ asset('pexels-eberhard-grossgasteiger-857251-1620x1080-25fps.mp4') }}" type="video/mp4">
+    <!-- Ajoutez d'autres sources vidéo ici pour la compatibilité avec différents navigateurs -->
+</video>
   <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
@@ -47,46 +51,46 @@
 
                                 <div class="form-group my-2">
                                     <label for="filiere">Filière :</label>
-                                      <select name="filiere" >
-                                      <option selected disabled class="selected">Choisir la filiére</option>
-                                          <optgroup label="licence prefessionnelle:">
-                                          <optgroup label="Informatique:">
-                                            <option value="aasri">AASRI</option>
-                                            <option value="asbdr">ASBDR</option>
-                                            <option value="daabd">DAABD</option>
-                                            <option value="di">DI</option>
-                                            <option value="dwm">DWM</option>
-                                            <option value="im">IM</option>
-                                            <option value="lsi">LSI</option>
-                                            <option value="ircc">IRCC</option>
-                                            <option value="taw">TAW</option>
-                                            <option value="fs-devops">FS and DEVOP</option>
-                                           <option value="mispp">MISPP</option>
-                                    </optgroup>
-                                     <optgroup label="Sciences de l'ingénieur">
-                                          <option value="lpeeaii">LPEEAII</option>
-                                          <option value="gc">GC</option>
-                                          <option value="gese">GESE</option>
-                                          <option value="gil">GIL</option>
-                                          <option value="ga">GA</option>
-                                          <option value="gamur">GAMUR</option>
-                                    <option value="tmbtp">TMBTP</option>
-                                   </optgroup>
-                                   <optgroup label="Masters spécialisés">
-                                      <optgroup label="Informatique:">
-                                         <option value="bd2c">BD2C</option>
-                                         <option value="bisd">BISD</option>
-                                         <option value="msi">MSI</option>
-                                     </optgroup>
-                                 <optgroup label="Sciences de l'ingénieur">
-                                         <option value="meeaii">MEEAII</option>
-                                         <option value="gl">GL</option>
-                                        <option value="ier">IER</option>
-                                        <option value="msm">MSM</option>
-                                <option value="bimae">BIMAE</option>
-                             </optgroup>
-                          </optgroup>
-                       </select>
+                                    <select name="filiere" class="form-control" id="fil">
+                    <option selected disabled class="selected">Choisir la filiére</option>
+                    <optgroup label="licence prefessionnelle:">
+                        <optgroup label="Informatique:">
+                            <option value="aasri">AASRI</option>
+                            <option value="asbdr">ASBDR</option>
+                            <option value="daabd">DAABD</option>
+                            <option value="di">DI</option>
+                            <option value="dwm">DWM</option>
+                            <option value="im">IM</option>
+                            <option value="lsi">LSI</option>
+                            <option value="ircc">IRCC</option>
+                            <option value="taw">TAW</option>
+                            <option value="fs-devops">FS and DEVOP</option>
+                            <option value="mispp">MISPP</option>
+                        </optgroup>
+                        <optgroup label="Sciences de l'ingénieur">
+                            <option value="lpeeaii">LPEEAII</option>
+                            <option value="gc">GC</option>
+                            <option value="gese">GESE</option>
+                            <option value="gil">GIL</option>
+                            <option value="ga">GA</option>
+                            <option value="gamur">GAMUR</option>
+                            <option value="tmbtp">TMBTP</option>
+                        </optgroup>
+                    <optgroup label="Masters spécialisés">
+                        <optgroup label="Informatique:">
+                            <option value="bd2c">BD2C</option>
+                            <option value="bisd">BISD</option>
+                            <option value="msi">MSI</option>
+                        </optgroup>
+                        <optgroup label="Sciences de l'ingénieur">
+                            <option value="meeaii">MEEAII</option>
+                            <option value="gl">GL</option>
+                            <option value="ier">IER</option>
+                            <option value="msm">MSM</option>
+                            <option value="bimae">BIMAE</option>
+                        </optgroup>
+                    </optgroup>
+                </select>
                                 </div>
 
                                 <div class="form-group my-2">
@@ -133,47 +137,47 @@
                                 </div>
 
                                 <div class="form-group my-2">
-                                  <label for="filiere">Filière :</label>
-                                  <select name="filiere" >
-                                      <option selected disabled class="selected">Choisir la filiére</option>
-                                          <optgroup label="licence prefessionnelle:">
-                                          <optgroup label="Informatique:">
-                                            <option value="aasri">AASRI</option>
-                                            <option value="asbdr">ASBDR</option>
-                                            <option value="daabd">DAABD</option>
-                                            <option value="di">DI</option>
-                                            <option value="dwm">DWM</option>
-                                            <option value="im">IM</option>
-                                            <option value="lsi">LSI</option>
-                                            <option value="ircc">IRCC</option>
-                                            <option value="taw">TAW</option>
-                                            <option value="fs-devops">FS and DEVOP</option>
-                                           <option value="mispp">MISPP</option>
-                                    </optgroup>
-                                     <optgroup label="Sciences de l'ingénieur">
-                                          <option value="lpeeaii">LPEEAII</option>
-                                          <option value="gc">GC</option>
-                                          <option value="gese">GESE</option>
-                                          <option value="gil">GIL</option>
-                                          <option value="ga">GA</option>
-                                          <option value="gamur">GAMUR</option>
-                                    <option value="tmbtp">TMBTP</option>
-                                   </optgroup>
-                                   <optgroup label="Masters spécialisés">
-                                      <optgroup label="Informatique:">
-                                         <option value="bd2c">BD2C</option>
-                                         <option value="bisd">BISD</option>
-                                         <option value="msi">MSI</option>
-                                     </optgroup>
-                                 <optgroup label="Sciences de l'ingénieur">
-                                         <option value="meeaii">MEEAII</option>
-                                         <option value="gl">GL</option>
-                                        <option value="ier">IER</option>
-                                        <option value="msm">MSM</option>
-                                <option value="bimae">BIMAE</option>
-                             </optgroup>
-                          </optgroup>
-                       </select>
+                                    <label for="filiere">Filière :</label>
+                                    <select name="filiere" class="form-control" id="fil">
+                    <option selected disabled class="selected">Choisir la filiére</option>
+                    <optgroup label="licence prefessionnelle:">
+                        <optgroup label="Informatique:">
+                            <option value="aasri">AASRI</option>
+                            <option value="asbdr">ASBDR</option>
+                            <option value="daabd">DAABD</option>
+                            <option value="di">DI</option>
+                            <option value="dwm">DWM</option>
+                            <option value="im">IM</option>
+                            <option value="lsi">LSI</option>
+                            <option value="ircc">IRCC</option>
+                            <option value="taw">TAW</option>
+                            <option value="fs-devops">FS and DEVOP</option>
+                            <option value="mispp">MISPP</option>
+                        </optgroup>
+                        <optgroup label="Sciences de l'ingénieur">
+                            <option value="lpeeaii">LPEEAII</option>
+                            <option value="gc">GC</option>
+                            <option value="gese">GESE</option>
+                            <option value="gil">GIL</option>
+                            <option value="ga">GA</option>
+                            <option value="gamur">GAMUR</option>
+                            <option value="tmbtp">TMBTP</option>
+                        </optgroup>
+                    <optgroup label="Masters spécialisés">
+                        <optgroup label="Informatique:">
+                            <option value="bd2c">BD2C</option>
+                            <option value="bisd">BISD</option>
+                            <option value="msi">MSI</option>
+                        </optgroup>
+                        <optgroup label="Sciences de l'ingénieur">
+                            <option value="meeaii">MEEAII</option>
+                            <option value="gl">GL</option>
+                            <option value="ier">IER</option>
+                            <option value="msm">MSM</option>
+                            <option value="bimae">BIMAE</option>
+                        </optgroup>
+                    </optgroup>
+                </select>
                                 </div>
 
                                 <div class="form-group my-2">
@@ -217,6 +221,16 @@
             }
         });
     </script>
-
+<style>
+    #background-video {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        z-index: -1;
+    }
+</style>
 @endsection
 

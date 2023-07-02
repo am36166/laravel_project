@@ -1,7 +1,7 @@
-@extends('responsablefil')
+@extends('responsablemohamed')
 @section('respfil')
  
-    <div class="container">
+    <div class="container mt-4 mr-3">
         <div class="row d-flex justify-content-between">
             <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
                 <div class="card bg-primary text-white">
@@ -86,5 +86,13 @@
         </div>
     </div>
     </div>
-
+    <style>
+    body{
+        background: url('{{ asset('RRR.png') }}')
+    }
+    .container{
+        width: 80%;
+        margin-right: 50px;
+    }
+</style>
 @endsection

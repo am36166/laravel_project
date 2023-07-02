@@ -45,7 +45,7 @@ Route::post('/form/storeresp',[responsablefilcontroller::class,'compte'])->name(
 //restrction sur les pages qui demandent une connexion
 
 Route::prefix('etudiantpage')->middleware(['auth', 'Role:0'])->group(function (){
-  Route::get('/', [Etudiantcontroller::class, 'indexetudiant'])->name('etudiant');
+ // Route::get('/', [Etudiantcontroller::class, 'indexetudiant'])->name('etudiant');
   Route::get('/modifier/{id}', [Etudiantcontroller::class, 'indexform'])->name('updatedata') ;
   Route::post('/modifier/{id}', [Etudiantcontroller::class, 'updatestore'])->name('updatestore') ;
   Route::get('/Pdf/{id}', [Generpdf::class, 'genererPDF'])->name('Pdf') ;
@@ -53,6 +53,7 @@ Route::prefix('etudiantpage')->middleware(['auth', 'Role:0'])->group(function ()
   Route::post('/paiementstore/{id}', [Etudiantcontroller::class, 'storepaiement'])->name('paiementstore') ;
   Route::get('/profile/{id}', [Etudiantcontroller::class, 'indexprofile'])->name('profile') ;
   Route::get('/historique/{id}', [Etudiantcontroller::class, 'historique'])->name('historique');
+  Route::get('/', [Etudiantcontroller::class, 'displaypage'])->name('page');
 });
       
 Route::prefix('responsableFil')->middleware(['auth', 'Role:1'])->group(function (){
