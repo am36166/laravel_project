@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
     <title>@yield('title')</title>
-<<<<<<< HEAD
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lykmapipo/themify-icons@0.1.2/css/themify-icons.css">
+	
 </head>
 <style>
      .side-nav{
@@ -280,164 +280,6 @@ button:hover{
     <div class="container">
         <nav>
             <div class="logo">DreamVerse<b>.</b></div>
-=======
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/admin-lte@3.2.0/dist/css/adminlte.min.css">
-    <style>
-        .img {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            object-fit: cover;
-        }
-        .wrapper {
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            background-color: #f5f5f5;
-        }
-        .content-wrapper {
-            flex-grow: 1;
-            padding: 20px;
-        }
-        .alert {
-            margin-bottom: 10px;
-            border-radius: 5px;
-        }
-        /* Personnalise la navbar */
-        .main-header.navbar {
-            background-color: #333;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
-        .main-header.navbar .nav-link {
-            color: #fff;
-            transition: color 0.3s ease;
-        }
-        .main-header.navbar .nav-link:hover {
-            color: #ffc107;
-        }
-        /* Personnalise la sidebar */
-        .main-sidebar.sidebar-dark-primary {
-            background-color: #333;
-        }
-        .main-sidebar.sidebar-dark-primary .nav-sidebar .nav-link {
-            color: #fff;
-        }
-        .profile-img {
-            display: block;
-            margin: 0 auto;
-            max-width: 200px;
-        }
-        @import url(https://fonts.googleapis.com/css?family=PT+Sans+Narrow:700,400|Titillium+Web:400,600,700,300);
-        @import url(https://fonts.googleapis.com/css?family=Dosis:400,300,500);
-
-        * {
-          box-sizing: border-box;
-        }
-
-        ::-webkit-input-placeholder {
-          color: #e4e4e4;
-        }
-
-        body {
-          width: 100%;
-          height: 100%;
-          margin: 0;
-          padding: 0;
-          font-family: 'Dosis', sans-serif;
-        }
-
-        .card {
-          width: 400px;
-          margin: 50px auto;
-          text-align: center;
-          padding: 10px;
-          color: #000;
-          box-shadow: 0 0 10px rgba(55, 55, 55, .5);
-          background-color: #fff;
-          border-radius: 4px;
-        }
-
-        .card-img-top {
-          width: 80px;
-          height: 80px;
-          margin: 10px auto;
-          margin-top: -30px;
-          border-radius: 50%;
-          border: 2px solid #000;
-          transition: .3s;
-        }
-
-        .card-img-top:hover {
-          cursor: pointer;
-          transform: translateY(-10px) scale(1.3);
-        }
-
-        .card-title {
-          font-size: 30px;
-          padding: 5px;
-          font-family: 'PT Sans Narrow', sans-serif;
-          margin-bottom: 10px;
-        }
-
-        .card-text {
-          font-size: 16px;
-          line-height: 1.4;
-          color: #000;
-          margin: 0;
-          padding: 0;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-        }
-
-        .card-text p {
-          margin: 5px 0;
-        }
-
-        .card-text p:nth-child(2) {
-          font-weight: bold;
-          font-size: 18px;
-        }
-
-        .card-text p:last-child {
-          font-weight: 500;
-          font-size: 16px;
-          margin-top: 10px;
-        }
-
-        .card-text a {
-          transition: .2s;
-        }
-
-        .card-text a:hover {
-          color: #999;
-        }
-
-        .main-header.navbar.expanded {
-            flex-grow: 1;
-        }
-
-        /* Styles pour la sidebar réduite */
-        .main-sidebar.collapsed {
-            width: 50px;
-            transition: width 0.3s ease;
-        }
-        @yield('style')
-    </style>
-</head>
-<body>  
-    <div class="wrapper">
-       <nav class="main-header navbar navbar-expand navbar-dark bg-dark ">
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link" data-widget="pushmenu" href="#" role="button" id="sidebarToggle"><i class="fas fa-bars"></i></a>
-                </li>
-            </ul>
->>>>>>> 236910e7e7e9051c87a0f35f2e34eca57a3dc0db
         </nav>
           <div class="col-md-12">
                             <div class="card-body">    

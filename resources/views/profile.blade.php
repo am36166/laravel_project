@@ -1,58 +1,5 @@
 
 @section('title','Profile')
-<<<<<<< HEAD
-=======
-@section('style')
-<style>
-  .profile-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100vh; 
-}
-  
-  .profile-picture {
-      width: 100px;
-      height: 100px;
-      border-radius: 50%;
-      overflow: hidden;
-      margin: 0 auto 20px;
-  }
-  
-  .profile-picture img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-  }
-  
-  .profile-name {
-      font-size: 24px;
-      font-weight: bold;
-      text-align: center;
-      margin-bottom: 10px;
-  }
-  
-  .profile-card {
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-      padding: 20px;
-      text-align: center;
-  }
-  
-  .profile-details h6 {
-      font-weight: bold;
-      margin-bottom: 5px;
-  }
-  
-  .profile-details p {
-      margin: 0;
-      color: #555;
-      text-align: center;
-  }
-</style>
-@endsection
->>>>>>> 236910e7e7e9051c87a0f35f2e34eca57a3dc0db
 @section('studentcontent')
 <style>
     .side-nav{
