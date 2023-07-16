@@ -54,9 +54,9 @@ class Etudiantcontroller extends Controller
           $user = Auth::User()->user_id ; 
           $etudiant = DB::table('etudiants')
                   ->join('users', 'users.user_id', '=', 'etudiants.user_id')
-                 ->select('etudiants.*')
-                 ->where('etudiants.user_id', $user)
-                 ->first();
+                  ->select('etudiants.*')
+                  ->where('etudiants.user_id', $user)
+                  ->first();
 
        return view('etudiantpage',compact('etudiant')) ;                
 

@@ -42,7 +42,6 @@ class responsablefilcontroller extends Controller
                 ->where('ev.cne', $etudiant->cne)
                 ->select('v.montant', 'v.montant_valide', 'v.date_vir', 'v.urlrecu', 'v.num_vir')
                 ->get();
-    
             $etudiant->paiements = $paiements;
         }
     
@@ -190,8 +189,7 @@ class responsablefilcontroller extends Controller
 
      public function repartir() {
   
-        $user = Auth::User()->user_id ; 
-        
+        $user = Auth::User()->user_id ;      
 
         $filiere =  DB::table('responsablefilieres')
         ->join('users', 'responsablefilieres.user_id', '=', 'users.user_id')
@@ -201,9 +199,6 @@ class responsablefilcontroller extends Controller
         ->first();
         
       
-       
-       
-
         $montantTotal = DB::table('declarevirements') 
         ->join('etudiant_declarevirements', 'declarevirements.num_vir', '=', 'etudiant_declarevirements.num_vir')
         ->join('etudiants', 'etudiant_declarevirements.cne', '=', 'etudiants.cne')
@@ -253,7 +248,7 @@ class responsablefilcontroller extends Controller
           ]
       ];
     
-      // Répartition du montant de la rubrique faculte sur les sous-rubriques
+  // Répartition du montant de la rubrique faculte sur les sous-rubriques
   $resultat['gestion_faculte']['montant_rub'] = $resultat['faculte']['montant_rub'] * $resultat['gestion_faculte']['prc'];
   $resultat['cfc']['montant_rub'] = $resultat['faculte']['montant_rub'] * $resultat['cfc']['prc'];
   $resultat['fonctionnaire']['montant_rub'] = $resultat['faculte']['montant_rub'] * $resultat['fonctionnaire']['prc'];

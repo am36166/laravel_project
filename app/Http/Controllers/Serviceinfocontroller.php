@@ -77,7 +77,7 @@ class Serviceinfocontroller extends Controller
              'prenom_e' => $request->prenom,
              'telephone' => $request->telephone,
               'adresse' => $request->adresse,
-              'urlimg'  => $request->file('image')->store('profiletud','public'),//inserer la photo Ds le Dossier public
+              'urlimg'  => $request->file('image')->store('profiletud','public'),//inserer la photo Ds le Dossier 
              'date_naissance' => $request->datenaissance,
              'user_id' => $userid,
              'filiere_id' => '3',
