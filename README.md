@@ -1,43 +1,5 @@
 # laravel_project
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Laravel Project: Student Management</title>
-    <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            line-height: 1.6;
-            color: #333;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-
-        h1 {
-            color: #2c3e50;
-        }
-
-        h2 {
-            color: #3498db;
-        }
-
-        p {
-            margin-bottom: 15px;
-        }
-
-        code {
-            background-color: #ecf0f1;
-            padding: 2px 5px;
-            border-radius: 4px;
-            font-family: 'Courier New', Courier, monospace;
-        }
-    </style>
-</head>
-<body>
-
 <h1>Laravel Project: Student Management</h1>
 
 <p>Welcome to the documentation for the Student Management and Payment Distribution Application, a Laravel-based project...</p>
@@ -83,5 +45,5 @@
 
 <p>Thank you for choosing our Laravel-based solution. If you have any questions or need assistance, feel free to reach out to our support team. Happy coding!</p>
 
-</body>
-</html>
+
+
